@@ -21,13 +21,14 @@ const barSchema = new Schema(
         },
 
         //objectId: el bar puede tener varias reviews (one to many), revisar ejemplo libros y autores
-        
 
-    
-        timestamps: true,
+
+
+        // timestamps: true,
     }
 );
 
-const User = model("Bar", barSchema);
+const Bar = model("Bar", barSchema);
 
 module.exports = Bar;
+
