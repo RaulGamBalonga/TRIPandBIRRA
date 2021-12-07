@@ -13,10 +13,10 @@ router.post('/signup', (req, res) => {
     .findOne({ username })
     .then(user => {
       if (user) {
-        res.status(400).json({ code: 400, message: "Usuario ya creado,prueba otro" })
+        res.status(400).json({ code: 400, message: "Este usuario ya está registrado, prueba otro" })
         return
       }
-      
+
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(pwd, salt)
 
@@ -25,9 +25,10 @@ router.post('/signup', (req, res) => {
       User
         .create({ username, password: hashPass, email })
         .then((user) => res.status(200).json(user))
-        .catch(err => res.status(500).json({ code: 500, message: "Error de DB al crear usuario", err: err.message }))
+        .catch(err => res.status(500).json({ code: 500, message: "Error de BBDD al crear usuario", err: err.message }))
+      console.log('>>>>>>', { username, password: hashPass, email });
     })
-    .catch(err => res.status(500).json({ code: 500, message: "Error de DB buscar usuario", err: err.message }))
+    .catch(err => res.status(500).json({ code: 500, message: "Error de BBDD al buscar usuario", err: err.message }))
 
 })
 /* LOGIN */
@@ -40,12 +41,12 @@ router.post('/login', (req, res) => {
     .then(user => {
 
       if (!user) {
-        res.status(401).json({ code: 401, message: 'No existe ese usuario' })
+        res.status(401).json({ code: 401, message: 'No existe este usuario' })
         return
       }
 
       if (bcrypt.compareSync(password, user.password) === false) {
-        res.status(401).json({ code: 401, message: 'Contraseña incorrecta ' })
+        res.status(401).json({ code: 401, message: 'Contraseña incorrecta' })
         return
       }
 
@@ -53,7 +54,7 @@ router.post('/login', (req, res) => {
       console.log(req.session.currentUser)
       res.json(req.session.currentUser)
     })
-    .catch(err => res.status(500).json({ code: 500, message: 'Error de la DB buscando usuario', err }))
+    .catch(err => res.status(500).json({ code: 500, message: 'Error de la BBDD buscando usuario', err }))
 })
 
 /* LOGOUT */

@@ -53,4 +53,3 @@ const User = model("User", userSchema);
 
 module.exports = User;
 
-//to do: user_id
