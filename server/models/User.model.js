@@ -30,12 +30,19 @@ const userSchema = new Schema(
 
     image: {
       type: String,
-    },
+  /*   },
 
     // favorites: {
     //   type: { Object_id },
     // }
-  },
+  }, */
+
+    },
+    
+    favorites: [{ type: Schema.Types.ObjectId, ref: 'Bar' }],
+
+    },
+
 
   {
     timestamps: true,

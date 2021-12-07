@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const bcryptSalt = 10
 
-const { isADMIN } = require("../utils/consts")
+const { isADMIN } = require("../utils")
 
 /* SIGNUP */
 router.post('/signup', (req, res) => {
@@ -13,19 +13,21 @@ router.post('/signup', (req, res) => {
     .findOne({ username })
     .then(user => {
       if (user) {
-        res.status(400).json({ code: 400, message: "Este usuario ya existe" })
+        res.status(400).json({ code: 400, message: "Usuario ya creado,prueba otro" })
         return
       }
-
+      
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(pwd, salt)
 
+
+
       User
-        .create({ username, email, password: hashPass })
+        .create({ username, password: hashPass, email })
         .then((user) => res.status(200).json(user))
         .catch(err => res.status(500).json({ code: 500, message: "Error de DB al crear usuario", err: err.message }))
     })
-    .catch(err => res.status(500).json({ code: 500, message: "Error de la DB al buscar usuario", err: err.message }))
+    .catch(err => res.status(500).json({ code: 500, message: "Error de DB buscar usuario", err: err.message }))
 
 })
 /* LOGIN */
@@ -38,7 +40,7 @@ router.post('/login', (req, res) => {
     .then(user => {
 
       if (!user) {
-        res.status(401).json({ code: 401, message: 'No existe este usuario' })
+        res.status(401).json({ code: 401, message: 'No existe ese usuario' })
         return
       }
 
@@ -57,12 +59,13 @@ router.post('/login', (req, res) => {
 /* LOGOUT */
 router.get('/logout', (req, res) => {
   console.log(req.session.currentUser)
-  req.session.destroy((err) => res.status(200).json({ code: 200, message: 'Sesión cerrada correctamente' }));
+  req.session.destroy((err) => res.status(200).json({ code: 200, message: 'Sesion cerrada correctamente' }));
 })
-
-// COMPROBACIÓN DE LOGIN
+/* Comprobación de login */
 router.get("/isloggedin", (req, res) => {
   req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Accede o registrate' })
 })
 
 module.exports = router
+
+

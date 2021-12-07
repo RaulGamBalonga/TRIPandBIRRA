@@ -21,9 +21,9 @@ const barSchema = new Schema(
         },
 
         //objectId: el bar puede tener varias reviews (one to many), revisar ejemplo libros y autores
-    },
+        
 
-    {
+    
         timestamps: true,
     }
 );
