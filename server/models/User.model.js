@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       type: String,
       unique: true,
       required: true,
@@ -30,12 +30,19 @@ const userSchema = new Schema(
 
     image: {
       type: String,
-    },
+  /*   },
 
     // favorites: {
     //   type: { Object_id },
     // }
-  },
+  }, */
+
+    },
+    
+    favorites: [{ type: Schema.Types.ObjectId, ref: 'Bar' }],
+
+    },
+
 
   {
     timestamps: true,

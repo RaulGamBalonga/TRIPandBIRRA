@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const reviewSchema = new Schema(
     {
-        review: {
+        comment: {
             type: String,
             // minlength: 5,
             // maxlength: 75,
@@ -26,7 +26,7 @@ const reviewSchema = new Schema(
 
         },
 
-        prize: {
+        price: {
             type: String,
             enum: ['Caro', 'Correcto', 'Barato'],
             //required: true,
@@ -46,9 +46,12 @@ const reviewSchema = new Schema(
             max: 3,
         },
 
-        user_id: {type: Schema.Types.ObjectId, ref: 'User'},
+        creator: {type: Schema.Types.ObjectId, ref: 'User'},
 
+        bar: { type: Schema.Types.ObjectId, ref: 'Bar' },
     },
+
+    
 
 
     {
