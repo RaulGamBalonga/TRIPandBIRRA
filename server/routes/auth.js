@@ -8,7 +8,7 @@ const { isADMIN } = require("../utils")
 /* SIGNUP */
 router.post('/signup', (req, res) => {
   const { username, pwd, email } = req.body
- console.log(">>>>>>>>" ,username , pwd, email)
+  console.log(">>>>>>>>", username, pwd, email)
   User
     .findOne({ username })
     .then(user => {
@@ -35,6 +35,8 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
 
   const { username, password } = req.body
+
+  console.log('DATOS EN EL LOGIN', username, password)
 
   User
     .findOne({ username })

@@ -3,7 +3,7 @@ import axios from 'axios'
 class BarService {
     constructor() {
         this.app = axios.create({
-            baseURL: 'http://localhost:5000/api/bar'
+            baseURL: 'http://localhost:5005/api/bar'
         })
     }
 
