@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Map from './components/pages/Map/Map';
+import credentials from './credentials.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+const mapURL = `https://maps.googleapis.com/maps/api/js?v.3exp&key=${credentials.mapsKey}`;
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      name: 'React'
+    };
+  }
+  render() {
+    return (
+      <>
+        <Map
+          googleMapURL={mapURL}
+          containerElement={<div style={{ height: '400px' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+          loadingElement={<p>Cargando</p>}
+        />
+      </>
+    )
+  }
 }
-
-export default App;
