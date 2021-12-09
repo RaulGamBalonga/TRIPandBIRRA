@@ -5,7 +5,6 @@ const bcryptSalt = 10
 
 const { isADMIN } = require("../utils")
 
-/* SIGNUP */
 router.post('/signup', (req, res) => {
   const { username, pwd, email } = req.body
   console.log(">>>>>>>>", username, pwd, email)
@@ -31,7 +30,8 @@ router.post('/signup', (req, res) => {
     .catch(err => res.status(500).json({ code: 500, message: "Error de BBDD al buscar usuario", err: err.message }))
 
 })
-/* LOGIN */
+
+
 router.post('/login', (req, res) => {
 
   const { username, password } = req.body
@@ -59,14 +59,16 @@ router.post('/login', (req, res) => {
     .catch(err => res.status(500).json({ code: 500, message: 'Error de la BBDD buscando usuario', err }))
 })
 
-/* LOGOUT */
+
+
 router.get('/logout', (req, res) => {
   console.log(req.session.currentUser)
   req.session.destroy((err) => res.status(200).json({ code: 200, message: 'Sesion cerrada correctamente' }));
 })
 
 
-/* Comprobación de login */
+
+
 router.get("/isloggedin", (req, res) => {
   req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Accede o registrate' })
 })

@@ -29,22 +29,24 @@ router.post("/new", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Hay un problema construyendo el bar" }))
 })
 
-// router.put("/editBar/:id", (req, res) => {
-//     const { id } = req.params
-//     const { name, location, image } = req.body
 
-//     Coaster.findByIdAndUpdate(id, { name, location, image }, { new: true })
-//         .then(updatedBar => res.json(updatedBar))
-//         .catch(err => res.json({ err, errMessage: "Hay un problema reformando el bar" }))
-// })
+//edit bar routes for TODO
+router.put("/editBar/:id", (req, res) => {
+    const { id } = req.params
+    const { name, location, image } = req.body
 
-// router.delete("/deleteBar/:id", (req, res) => {
-//     const { id } = req.params
+    Coaster.findByIdAndUpdate(id, { name, location, image }, { new: true })
+        .then(updatedBar => res.json(updatedBar))
+        .catch(err => res.json({ err, errMessage: "Hay un problema reformando el bar" }))
+})
 
-//     Bar.findByIdAndDelete(id)
-//         .then(deleteBar => res.json({ deleteBar }))
-//         .catch(err => res.json({ err, errMessage: "Hay un problema eliminando el bar" }))
-// })
+router.delete("/deleteBar/:id", (req, res) => {
+    const { id } = req.params
+
+    Bar.findByIdAndDelete(id)
+        .then(deleteBar => res.json({ deleteBar }))
+        .catch(err => res.json({ err, errMessage: "Hay un problema eliminando el bar" }))
+})
 
 
 

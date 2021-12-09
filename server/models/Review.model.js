@@ -62,11 +62,3 @@ const reviewSchema = new Schema(
 const Review = model("Review", reviewSchema);
 
 module.exports = Review;
-
-//to do: objet id user bar
-
-// rating: { //to do a review
-//     type: Number,
-//     // enum: ['*', '**', '***', '****', '*****',]
-
-// },

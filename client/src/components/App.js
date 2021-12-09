@@ -6,7 +6,6 @@ import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/LoginPage';
 import AuthService from '../services/auth.service';
 import Map from './pages/Map/Map'
-import UserProfile from './pages/UserProfile/UserProfilePage';
 import BarPage from "./pages/BarList/BarPage";
 import NewBarForm from './NewBarForm';
 // import Footer from './layout/Footer/Footer'
@@ -46,20 +45,20 @@ class App extends Component {
 
                         {this.state.loggedUser ?
 
-                            <>   
-                            
-                                <Redirect to="/" /> 
+                            <>
+
+                                <Redirect to="/" />
                                 <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
-                                <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />                          
+                                <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
                             </>
                             :
-                            
+
                             <>
                                 <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
                                 <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
-                                <Route path="/login" render={(props) => <UserProfile {...props} storeUser={this.storeUser} />} />
-                                
+
+
                             </>
                         }
                     </Switch>

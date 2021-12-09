@@ -19,12 +19,6 @@ const barSchema = new Schema(
         image: {
             type: String,
         },
-
-        //objectId: el bar puede tener varias reviews (one to many), revisar ejemplo libros y autores
-
-
-
-        // timestamps: true,
     }
 );
 

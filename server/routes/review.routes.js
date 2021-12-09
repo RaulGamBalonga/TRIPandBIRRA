@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const Review = require("../models/Review.model")
 
-/* Listado de reseñas */
+
 router.get("/allReviews", (req, res) => {
     Review.find()
         .then(allReviews => res.json(allReviews))
@@ -9,7 +9,7 @@ router.get("/allReviews", (req, res) => {
 })
 
 
-/* Crear una reseña */
+
 router.post("/newReview", (req, res) => {
     const { comment, image, drink, tapa, price, quality, rating, creator, bar } = req.body
     
@@ -17,7 +17,7 @@ router.post("/newReview", (req, res) => {
     .then(newReview => res.json(newReview))
     .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
 })
-/* Buscar una reseña por ID */
+
 router.get("/:id", (req, res) => {
     const { id } = req.params
 
@@ -27,6 +27,3 @@ router.get("/:id", (req, res) => {
 })
 
 module.exports = router;
-
-
-// todo ->falta popular creator y bar?
