@@ -7,9 +7,10 @@ class BarService {
         })
     }
 
-    getAllBar = () => this.app.get("/allBar")
+    getAllBar = () => this.app.get("/all")
     getOneBar = (id) => this.app.get(`/bar/${id}`)
-    createBar = (barData) => this.app.post("/newBar", barData)
+    createBar = (barData) => this.app.post("/new", barData)
 }
 
 export default BarService
+

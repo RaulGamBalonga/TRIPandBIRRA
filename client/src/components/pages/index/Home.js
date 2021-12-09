@@ -1,22 +1,38 @@
-import React, { Component } from "react";
+/* import React, { Component } from "react";
 // import ReactDOM from "react-dom";
 import Map from '../Map/Map';
 import credentials from '../../../credentials.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import barService from "../../../services/bar.service";
 const mapURL = `https://maps.googleapis.com/maps/api/js?v.3exp&key=${credentials.mapsKey}`;
 
-export default class App extends Component {
+export default class Home extends Component {
 
     constructor() {
         super();
         this.state = {
-            name: 'React'
+            bars: []
         };
+    }
+    componentDidMount() {
+        this.refreshBars()
+    }
+
+    refreshBars = () => {
+        barService.getAllBar()
+            .then(response => {
+                console.log(response)
+                const bars = response.data
+                this.setState({ bars: bars }
+                    )
+            })
+            .catch(err => console.log(err))
     }
     render() {
         return (
             <>
-                <Map
+                {console.log(this.state)}
+                <Map bars={this.state.bars}
                     googleMapURL={mapURL}
                     containerElement={<div style={{ height: '400px' }} />}
                     mapElement={<div style={{ height: '100%' }} />}
@@ -26,25 +42,6 @@ export default class App extends Component {
         )
     }
 }
+ */
 
 
-// import React from "react";
-
-// import { Container, } from "react-bootstrap";
-
-// const Home = () => {
-//     return (
-//         <Container>
-//             <h1>Bievenid@ a Trip&Birra App!</h1>
-//             <p>Una app de busqueda de bares y tapas</p>
-
-//             <hr></hr>
-
-//            {/*  <Link to="/coaster-list">
-//                 <Button variant="dark" size="lg">Ver Bares</Button>
-//             </Link> */}
-//         </Container>
-//     )
-// }
-
-// export default Home

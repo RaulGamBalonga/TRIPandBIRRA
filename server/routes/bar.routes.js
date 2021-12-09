@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const Bar = require("../models/Bar.model")
 
-router.get("/allBar", (req, res) => {
+router.get("/all", (req, res) => {
     Bar.find()
         .then(allBar => res.json(allBar))
         .catch(err => res.json({ err, errMessage: "Problema buscando bares" }))
@@ -16,9 +16,14 @@ router.get("/:id", (req, res) => {
 })
 
 
-router.post("/newBar", (req, res) => {
-    const { name, location, image } = req.body
-    console.log({ name, location, image });
+router.post("/new", (req, res) => {
+    const { name, latitude, longitude, image } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+
     Bar.create({ name, location, image })
         .then(newBar => res.json(newBar))
         .catch(err => res.json({ err, errMessage: "Hay un problema construyendo el bar" }))

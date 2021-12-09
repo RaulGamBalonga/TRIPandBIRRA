@@ -8,12 +8,12 @@ const barSchema = new Schema(
 
         },
 
-        location: [{
+        location: {
             type: {
                 type: String,
             },
             coordinates: [Number]
-        }],
+        },
 
 
         image: {

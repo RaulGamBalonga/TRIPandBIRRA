@@ -1,17 +1,26 @@
 import React from "react";
-import { Container } from 'react-bootstrap'
+import BarCard from "./barCard"
 
 
-function BarPage() {
+function BarList(props) {
+
+    const bars = props.bars
+    console.log(bars)
+
+    const displayBars = () => {
+        return bars.map(bar => {
+            
+            return <BarCard key={bar._id} bar={bar} />
+        })
+    }
+
+
     return (
         <>
-
-            <div>
-                <Container>
-                    <h1>.</h1>
-                </Container>
-            </div>
+            {displayBars()}
         </>
     )
 }
-export default BarPage
+
+
+export default BarList

@@ -44,6 +44,15 @@ const bars = [
 
 ]
 
+/* return bars.map(bar => {
+
+    return <BarCard key={bar._id} bar={bar} />
+})
+    } */
+
+
+
+
 
 class SimpleMap extends Component {
     static defaultProps = {
@@ -54,9 +63,11 @@ class SimpleMap extends Component {
         zoom: 15
 
     };
-
+    
+    
     render() {
         return (
+           
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
@@ -66,6 +77,7 @@ class SimpleMap extends Component {
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
                 >
+                    {console.log(this.props)}
                     {
                         bars.map(bar => {
                             return (

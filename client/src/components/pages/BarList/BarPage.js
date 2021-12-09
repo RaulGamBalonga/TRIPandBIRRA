@@ -3,15 +3,16 @@ import { Container } from 'react-bootstrap'
 import BarService from "../../../services/bar.service";
 import BarList from "./BarList";
 
+const barService = new BarService()
+
 class BarPage extends Component {
   constructor() {
     super()
 
     this.state = {
-      coasters: []
+      bars: []
     }
 
-    this.service = new BarService()
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class BarPage extends Component {
   }
 
   refreshBars = () => {
-    this.service.getAllBar()
+    barService.getAllBar()
       .then(response => {
         const bars = response.data
 
@@ -32,13 +33,13 @@ class BarPage extends Component {
 
     return (
       <Container>
-        <h1>Coaster List</h1>
+        <h1>Listado de Bares</h1>
 
-        <CoasterList refreshCoasters={this.refreshCoasters} coasters={this.state.coasters} />
+        <BarList refreshBars={this.refreshBars} bars={this.state.bars} />
 
       </Container>
     )
   }
 }
 
-export default CoasterPage
+export default BarPage
