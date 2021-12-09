@@ -1,17 +1,12 @@
 import { Component } from 'react'
 import '..';
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Home from './pages/index/Home';
-// import CoasterPage from './pages/CoasterList/CoasterPage';
-// import CoasterDetails from './pages/CoasterDetails/DetailsPage';
 import Navbar from './layouts/Navigation/Navbar.js'
 import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/LoginPage';
 import AuthService from '../services/auth.service';
 import Map from './pages/Map/Map'
-import UserProfile from './pages/UserProfile/UserProfilePage';
-// import Footer from './layout/Footer/Footer'
-
+import UserPage from './pages/UserProfile/UserPage';
 
 class App extends Component {
     constructor(props) {
@@ -22,6 +17,7 @@ class App extends Component {
         }
 
         this.authService = new AuthService()
+        this.userPage = new UserPage()
     }
 
     componentDidMount() {
@@ -44,12 +40,14 @@ class App extends Component {
                     <Switch>
 
                         {this.state.loggedUser ?
-                            <Redirect to="/" />
+                            <>
+                                <Redirect to="/" />
+                                <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
+                            </>
                             :
                             <>
                                 <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
                                 <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
-                                <Route path="/login" render={(props) => <UserProfile {...props} storeUser={this.storeUser} />} />
                             </>
                         }
                     </Switch>
