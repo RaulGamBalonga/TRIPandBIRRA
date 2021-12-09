@@ -2,16 +2,16 @@ import React from "react";
 import { Container } from 'react-bootstrap'
 
 
-function BarPage() {
+function BarDetails() {
     return (
         <>
 
             <div>
                 <Container>
-                    <h1>.</h1>
+                    <h1>Detalles del Bar</h1>
                 </Container>
             </div>
         </>
     )
 }
-export default BarPage
+export default BarDetails

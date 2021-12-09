@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from 'react-bootstrap'
 
 
-function BarPage() {
+function ReviewCard() {
     return (
         <>
 
@@ -14,4 +14,4 @@ function BarPage() {
         </>
     )
 }
-export default BarPage
+export default ReviewCard

@@ -8,7 +8,7 @@ const UserCard = ({ loggedUser }) => {
     const { _id, username, email, image } = loggedUser
 
     return (
-        <Card className="coaster-card" style={{ width: '18rem' }}>
+        <Card className="user-card" style={{ width: '18rem' }}>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>¡Bienvenido {username}!</Card.Title>

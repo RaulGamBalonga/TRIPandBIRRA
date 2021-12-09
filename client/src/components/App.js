@@ -6,7 +6,6 @@ import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/LoginPage';
 import AuthService from '../services/auth.service';
 import Map from './pages/Map/Map'
-import UserProfile from './pages/UserProfile/UserProfilePage';
 import BarPage from "./pages/BarList/BarPage";
 import NewBarForm from './NewBarForm';
 // import Footer from './layout/Footer/Footer'
@@ -58,7 +57,7 @@ class App extends Component {
                             <>
                                 <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
                                 <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
-                                <Route path="/login" render={(props) => <UserProfile {...props} storeUser={this.storeUser} />} />
+                              
                                 
                             </>
                         }

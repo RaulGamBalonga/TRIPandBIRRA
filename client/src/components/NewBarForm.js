@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BarService from '../services/bar.service'
-import { Redirect } from 'react-router'
+
 
 export default class NewBarForm extends Component {
     constructor(props) {
@@ -22,8 +22,7 @@ export default class NewBarForm extends Component {
 
         this.service.createBar(this.state)
             .then(response => {
-                // this.props.closeModal()
-                // this.props.refreshBars()
+              
                 this.props.history.push("/bar")
             })
             .catch(err => console.log(err))
