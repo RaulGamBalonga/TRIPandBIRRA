@@ -12,6 +12,9 @@ class AuthService {
     login = (username, password) => this.app.post("/login", { username, password })
     logout = () => this.app.get("/logout")
     isloggedin = () => this.app.get("/isloggedin")
+    map = () => this.app.post('/map')
+    userProfile = (username, email, image, favorites) => this.app.get('/userProfile', { username, email, image, favorites })
+
 }
 
 export default AuthService

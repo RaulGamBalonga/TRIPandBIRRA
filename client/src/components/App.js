@@ -8,6 +8,7 @@ import Navbar from './layouts/Navigation/Navbar.js'
 import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/LoginPage';
 import AuthService from '../services/auth.service';
+import Map from './pages/Map/Map'
 // import Footer from './layout/Footer/Footer'
 class App extends Component {
     constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
                             </>
                         }
                     </Switch>
+                    <Map />
                 </main>
 
                 {/* <Footer /> */}
