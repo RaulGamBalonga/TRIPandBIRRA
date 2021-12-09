@@ -64,6 +64,8 @@ router.get('/logout', (req, res) => {
   console.log(req.session.currentUser)
   req.session.destroy((err) => res.status(200).json({ code: 200, message: 'Sesion cerrada correctamente' }));
 })
+
+
 /* Comprobación de login */
 router.get("/isloggedin", (req, res) => {
   req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Accede o registrate' })

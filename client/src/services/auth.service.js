@@ -13,7 +13,7 @@ class AuthService {
     logout = () => this.app.get("/logout")
     isloggedin = () => this.app.get("/isloggedin")
     map = () => this.app.post('/map')
-    userProfile = (username, email, image, favorites) => this.app.get('/userProfile', { username, email, image, favorites })
+    userProfile = (username, email, image, favorites) => this.app.get('/userprofile', { username, email, image, favorites })
 
 }
 
