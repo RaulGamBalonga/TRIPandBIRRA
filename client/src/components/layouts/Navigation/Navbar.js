@@ -2,7 +2,6 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
-// import UserProfilePage from '../../pages/UserProfile/UserProfilePage'
 
 const authService = new AuthService()
 
