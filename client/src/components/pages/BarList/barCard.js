@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import './BarPage.css'
 
 function BarCard(props) {
-    console.log(">>>>>>>>>>", props.bar);
+    
 
     return (
         <>
 
-            <Card className="coaster-card" style={{ width: '18rem' }}>
+            <Card className="bar-card" style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={props.bar.imageUrl} />
                 <Card.Body>
                     <Card.Title>{props.bar.name}</Card.Title>
