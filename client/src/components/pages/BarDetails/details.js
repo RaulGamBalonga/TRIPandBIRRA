@@ -8,7 +8,7 @@ function BarDetails() {
 
             <div>
                 <Container>
-                    <h1>Detalles del Bar</h1>
+                    <h1>Detalles del Bar y las reviews</h1>
                 </Container>
             </div>
         </>
