@@ -42,28 +42,22 @@ class App extends Component {
 
                 <Navbar storeUser={this.storeUser} loggedUser={this.state.loggedUser} />
                 <main>
-                    <Switch>
 
-                        {this.state.loggedUser ?
+                    {this.state.loggedUser ?
 
-                            <>
-
-                                <Redirect to="/" />
-                                <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
-                                <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
-                                <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
-                                <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
-                            </>
-                            :
-
-                            <>
-                                <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
-                                <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
-                              
-                                
-                            </>
-                        }
-                    </Switch>
+                        <Switch>
+                            <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
+                            <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
+                            <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
+                            <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
+                        </Switch>
+                        :
+                        <Switch>
+                            <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
+                            <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
+                            <Redirect to="/login" />
+                        </Switch>
+                    }
                     <Map />
                 </main>
 

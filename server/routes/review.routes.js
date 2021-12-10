@@ -12,10 +12,10 @@ router.get("/allReviews", (req, res) => {
 
 router.post("/newReview", (req, res) => {
     const { comment, image, drink, tapa, price, quality, rating, creator, bar } = req.body
-    
-    Review.create({ comment, image, drink, tapa, price, quality, rating, creator, bar  })
-    .then(newReview => res.json(newReview))
-    .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
+
+    Review.create({ comment, image, drink, tapa, price, quality, rating, creator, bar })
+        .then(newReview => res.json(newReview))
+        .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
 })
 
 router.get("/:id", (req, res) => {

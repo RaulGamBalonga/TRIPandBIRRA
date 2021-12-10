@@ -41,6 +41,25 @@ router.delete("/deleteBar/:id", (req, res) => {
 })
 
 
+router.get("/markers", (req, res) => {
+    Bar.find()
+        .then(allBar => {
+
+            const modifiedBars = allBar.map(bar => {
+                return {
+                    text: bar.name,
+                    lat: bar.location.coordinates[0],
+                    lng: bar.location.coordinates[1]
+                }
+            })
+
+            return res.json(modifiedBars)
+        })
+        .catch(err => res.json({ err, errMessage: "Problema buscando bares modificados" }))
+})
+
+
+
 router.get("/:id", (req, res) => {
     const { id } = req.params
 

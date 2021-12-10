@@ -20,7 +20,7 @@ class BarDetails extends Component {
 
         this.service.getOneBar(id)
             .then(response => {
-                // console.log('>>>>>>>>>>>>>>>>>', response.data)
+                
                 const { name, location, image } = response.data
 
                 this.setState({ name, location, image })

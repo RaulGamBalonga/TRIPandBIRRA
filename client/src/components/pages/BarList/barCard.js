@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './BarPage.css'
 
 function BarCard(props) {
-    console.log(props.bar, "<<<<<<<")
+    
 
 
     return (

@@ -5,7 +5,6 @@ import BarCard from "./barCard"
 function BarList(props) {
 
     const bars = props.bars
-    console.log(bars)
 
     const displayBars = () => {
         return bars.map(bar => {
