@@ -7,14 +7,6 @@ router.get("/all", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Problema buscando bares" }))
 })
 
-router.get("/:id", (req, res) => {
-    const { id } = req.params
-
-    Bar.findById(id)
-        .then(theBar => res.json(theBar))
-        .catch(err => res.json({ err, errMessage: "Hay un problema buscando el bar" }))
-})
-
 
 router.post("/new", (req, res) => {
     const { name, latitude, longitude, image } = req.body
@@ -46,6 +38,34 @@ router.delete("/deleteBar/:id", (req, res) => {
     Bar.findByIdAndDelete(id)
         .then(deleteBar => res.json({ deleteBar }))
         .catch(err => res.json({ err, errMessage: "Hay un problema eliminando el bar" }))
+})
+
+
+router.get("/markers", (req, res) => {
+    Bar.find()
+        .then(allBar => {
+
+            const modifiedBars = allBar.map(bar => {
+                return {
+                    text: bar.name,
+                    lat: bar.location.coordinates[0],
+                    lng: bar.location.coordinates[1]
+                }
+            })
+
+            return res.json(modifiedBars)
+        })
+        .catch(err => res.json({ err, errMessage: "Problema buscando bares modificados" }))
+})
+
+
+
+router.get("/:id", (req, res) => {
+    const { id } = req.params
+
+    Bar.findById(id)
+        .then(theBar => res.json(theBar))
+        .catch(err => res.json({ err, errMessage: "Hay un problema buscando el bar" }))
 })
 
 
