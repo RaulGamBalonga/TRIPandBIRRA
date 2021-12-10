@@ -26,6 +26,8 @@ const Navigation = ({ loggedUser, storeUser }) => {
                             <Nav.Link as={Link} to="/userprofile">Tu perfil</Nav.Link>,
                             <Nav.Link as={Link} to="/bar">Lista bares</Nav.Link>
                             <Nav.Link as={Link} to="/bar/new">Crear Bar</Nav.Link>
+                            <Nav.Link as={Link} to="/bar/review">Escribir reseña</Nav.Link>
+
                             <Nav.Link as={"span"} onClick={logout}>Salir</Nav.Link>
                         </>
                         :

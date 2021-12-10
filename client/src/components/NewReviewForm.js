@@ -1,32 +1,33 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import BarService from '../services/bar.service'
+import ReviewService from '../services/review.service'
 
+export default class NewReviewForm extends Component {
 
-export default class NewBarForm extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            name: "",
-            longitude: "",
-            latitude: "",
-            image: ""
+            comment: '',
+            image: '',
+            drink: '',
+            tapa: '',
+            price: '',
+            quality: '',
+            rating: '',
         }
-
-        this.service = new BarService()
+        this.service = new ReviewService()
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
-        this.service.createBar(this.state)
+        this.service.createReview(this.state)
             .then(response => {
 
-                this.props.history.push("/bar")
+                this.props.history.push("/review")
             })
             .catch(err => console.log(err))
-
     }
 
     handleInputChange = (e) => {
@@ -34,8 +35,6 @@ export default class NewBarForm extends Component {
 
         this.setState({ [name]: value })
     }
-
-
 
     render() {
         return (
@@ -45,17 +44,22 @@ export default class NewBarForm extends Component {
                     <Form.Control onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Longitud</Form.Label>
+                <Form.Group className="mb-3" controlId="drink">
+                    <Form.Label>Bebida</Form.Label>
+                    <Form.Control onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="tapa">
+                    <Form.Label>Tapa</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.description} name="longitude" type="text" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="length">
-                    <Form.Label>latitud</Form.Label>
+                <Form.Group className="mb-3" controlId="price">
+                    <Form.Label>Price</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.length} name="latitude" type="text" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="imageUrl">
+                <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Url de la imagen</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
                 </Form.Group>
