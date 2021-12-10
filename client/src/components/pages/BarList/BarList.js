@@ -8,7 +8,7 @@ function BarList(props) {
 
     const displayBars = () => {
         return bars.map(bar => {
-            
+
             return <BarCard key={bar._id} bar={bar} />
         })
     }

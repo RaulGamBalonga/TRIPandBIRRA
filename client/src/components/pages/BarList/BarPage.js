@@ -32,11 +32,11 @@ class BarPage extends Component {
   render() {
 
     return (
-      <Container>
+      <Container >
         <h1>Listado de Bares</h1>
-
-        <BarList refreshBars={this.refreshBars} bars={this.state.bars} />
-
+        <div className="barList">
+          <BarList refreshBars={this.refreshBars} bars={this.state.bars} />
+        </div>
       </Container>
     )
   }

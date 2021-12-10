@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import BarService from "../../../services/bar.service";
+import './Map.css'
 
-const AnyReactComponent = ({ text }) => <div style={{ background: 'white', padding: 20, borderRadius: '10px', display: 'block', minWidth: '100px' }}><p style={{ width: '100%', display: 'block' }}>{text}</p></div>;
+
+//TODO: llevar todos los estilos al .css
+const AnyReactComponent = ({ text }) => <div className='textArea'>
+    <p style={{ width: '100%', display: 'block' }}>{text}</p>
+</div>;
 
 const barService = new BarService()
 

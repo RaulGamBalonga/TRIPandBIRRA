@@ -1,0 +1,7 @@
+.textArea{
+background-color: rgb(245, 237, 168);
+padding: 5px;
+border-radius: 10px;
+display: block;
+min-width: 100px;
+}
