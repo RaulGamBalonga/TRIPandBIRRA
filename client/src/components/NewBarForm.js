@@ -19,7 +19,6 @@ export default class NewBarForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         this.service.createBar(this.state)
             .then(response => {
 

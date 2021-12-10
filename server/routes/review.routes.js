@@ -2,7 +2,7 @@ const router = require("express").Router()
 const Review = require("../models/Review.model")
 
 
-router.get("/allReviews", (req, res) => {
+router.get("/all", (req, res) => {
     Review.find()
         .then(allReviews => res.json(allReviews))
         .catch(err => res.json({ err, errMessage: "Problema buscando reseñas" }))
@@ -10,12 +10,12 @@ router.get("/allReviews", (req, res) => {
 
 
 
-router.post("/newReview", (req, res) => {
+router.post("/new", (req, res) => {
     const { comment, image, drink, tapa, price, quality, rating, creator, bar } = req.body
-    
-    Review.create({ comment, image, drink, tapa, price, quality, rating, creator, bar  })
-    .then(newReview => res.json(newReview))
-    .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
+
+    Review.create({ comment, image, drink, tapa, price, quality, rating, creator, bar })
+        .then(newReview => res.json(newReview))
+        .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
 })
 
 router.get("/:id", (req, res) => {

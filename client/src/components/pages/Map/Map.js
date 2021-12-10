@@ -42,8 +42,6 @@ const bars = [
 
 ]
 
-
-
 class SimpleMap extends Component {
     static defaultProps = {
         center: {

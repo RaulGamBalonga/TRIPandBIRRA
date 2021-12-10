@@ -52,7 +52,7 @@ class App extends Component {
                                 <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
                                 <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
-                                <Route exact path="/bar/review" render={(props) => <NewReviewForm {...props} storeUser={this.storeUser} />} />
+                                <Route exact path="/review/new" render={(props) => <NewReviewForm {...props} storeUser={this.storeUser} />} />
 
                             </>
                             :
