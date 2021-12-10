@@ -15,27 +15,27 @@ const reviewSchema = new Schema(
 
         drink: {
             type: String,
-            enum: ['Cerveza', 'Vino', 'Refresco', 'Otros'],
+            enum: ['CERVEZA', 'VINO', 'REFRESCO', 'OTRO'],
             //required: true,
         },
 
         tapa: {
             type: String,
-            enum: ['Frutos Secos (pipas, panchitos, patatas...', 'Olivas', 'Fritos (nuggets, croquetas...)', 'Pinchos', 'Otros'],
+            enum: ['FRUTOS SECOS (PIPAS, KIKOS, PATATAS...', 'OLIVAS', 'FRITOS (NUGUETS, CROQUETAS...)', 'PINCHOS', 'OTROS'],
             //required: true,
 
         },
 
         price: {
             type: String,
-            enum: ['Caro', 'Correcto', 'Barato'],
+            enum: ['CARO', 'CORRECTO', 'BARATO'],
             //required: true,
 
         },
 
         quality: {
             type: String,
-            enum: ['Mala', 'Buena'],
+            enum: ['MALA', 'BUENA'],
             //required: true,
 
         },
@@ -46,12 +46,12 @@ const reviewSchema = new Schema(
             max: 3,
         },
 
-        creator: {type: Schema.Types.ObjectId, ref: 'User'},
+        creator: { type: Schema.Types.ObjectId, ref: 'User' },
 
         bar: { type: Schema.Types.ObjectId, ref: 'Bar' },
     },
 
-    
+
 
 
     {
