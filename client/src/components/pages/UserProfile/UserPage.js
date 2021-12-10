@@ -18,7 +18,6 @@ class UserPage extends Component {
         this.service.getOneUser()
             .then(response => {
                 const user = response.data
-
                 this.setState({ user: user })
             })
             .catch(err => console.log(err))
@@ -29,7 +28,7 @@ class UserPage extends Component {
 
         return (
             <Container>
-                <UserCard loggedUser={this.props.loggedUser}/>
+                <UserCard loggedUser={this.props.loggedUser} />
             </Container>
         )
     }

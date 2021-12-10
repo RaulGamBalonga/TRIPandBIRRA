@@ -33,15 +33,6 @@ export default class NewReviewForm extends Component {
 
     }
 
-    // handleInputChange = (e) => {
-
-    //     let { name, value } = e.currentTarget
-
-    //     this.setState({ [name]: value })
-    //     console.log('ENTRO handleInputChange');
-
-    // }
-
     handleToggleButton = (selectedOption, name) => {
 
         this.setState({ [name]: selectedOption })

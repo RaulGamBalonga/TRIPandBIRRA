@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 const handleApiLoaded = (map, maps) => {
-    
+
+    console.log(map, maps)
 
     bars.map(bar => {
 
@@ -20,7 +22,7 @@ const handleApiLoaded = (map, maps) => {
         return marker
     })
 
-   
+
 };
 
 const bars = [
@@ -44,6 +46,7 @@ const bars = [
 
 class SimpleMap extends Component {
     static defaultProps = {
+        mapId: '601e432217b3abef',
         center: {
             lat: 40.393364243975796,
             lng: -3.6977601072752524
@@ -51,17 +54,17 @@ class SimpleMap extends Component {
         zoom: 15
 
     };
-    
-    
+
+
     render() {
         return (
-          
+
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyAp26dh8ZtMz9K0_fGmQ-Cd30fa7REb65Q' }}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
-                    yesIWantToUseGoogleMapApiInternals
+                    yesIWantToUseGoogleMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
                 >
                     {console.log(this.props)}
@@ -76,7 +79,7 @@ class SimpleMap extends Component {
                             )
                         })
                     }
-                    
+
 
                 </GoogleMapReact>
             </div>
@@ -84,5 +87,5 @@ class SimpleMap extends Component {
     }
 }
 
-export default SimpleMap;
+export default SimpleMap
 
