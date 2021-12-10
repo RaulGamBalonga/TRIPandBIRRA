@@ -8,6 +8,7 @@ import AuthService from '../services/auth.service';
 import Map from './pages/Map/Map'
 import BarPage from "./pages/BarList/BarPage";
 import NewBarForm from './NewBarForm';
+import BarDetails from './pages/BarDetails/BarDetails';
 // import Footer from './layout/Footer/Footer'
 
 import UserPage from './pages/UserProfile/UserPage';
@@ -50,6 +51,7 @@ class App extends Component {
                                 <Redirect to="/" />
                                 <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
                                 <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
+                                <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
                             </>
                             :
