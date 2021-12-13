@@ -52,16 +52,15 @@ export default class NewReviewForm extends Component {
 
         const uploadData = new FormData()
         uploadData.append('image', e.target.files[0])
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', { uploadData })
 
         this.uploadService
             .uploadImage(uploadData)
             .then(response => {
-
                 this.setState({
-                    review: {
-                        ...this.state.review,
-                        image: response.data.cloudinary_url
-                    },
+
+                    image: response.data.cloudinary_url
+
                 })
             })
             .catch(err => console.log(err))
