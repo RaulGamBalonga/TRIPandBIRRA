@@ -6,9 +6,9 @@ const User = require('../models/User.model')
 
 
 
-router.get("/all", isLoggedIn, (req, res) => {
+router.get("/all/:barId", (req, res) => {
     console.log(req.session.currentUser)
-    Review.find()
+    Review.find({ bar: req.params.barId })
         .then(allReviews => res.json(allReviews))
         .catch(err => res.json({ err, errMessage: "Problema buscando reseñas" }))
 })

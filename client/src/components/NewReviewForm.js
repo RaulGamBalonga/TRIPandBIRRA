@@ -18,8 +18,11 @@ export default class NewReviewForm extends Component {
             rating: '',
         }
         this.reviewService = new ReviewService()
+        this.barService = new BarService()
 
     }
+
+
 
     // 1. ya tenemos el id del bar en la url
     // 2. cuando el componente se monta, hacemos que ese id se guarde en 'bar' en el estado

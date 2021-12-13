@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
+import ReviewService from "../../../services/review.service";
+import ReviewList from "../BarList/ReviewList";
 
 class BarDetails extends Component {
     constructor(props) {
@@ -11,10 +13,12 @@ class BarDetails extends Component {
             _id: "",
             name: "",
             location: undefined,
-            image: ""
+            image: "",
+            reviews: []
         }
 
         this.barService = new BarService()
+        this.reviewService = new ReviewService()
 
 
     }
@@ -31,11 +35,18 @@ class BarDetails extends Component {
             })
             .catch(err => console.log(err))
 
+        this.reviewService.getAllReviews(id)
+            .then(response => {
+            const reviews = response.data
+            this.setState({...this.state, reviews})
+        })
+                .catch(err => console.log(err))
+
     }
 
     render() {
         const { name, location, image, _id } = this.state
-        console.log("el estado en cada render", this.state)
+       
         return (
             <>
                 <Container>
@@ -57,6 +68,7 @@ class BarDetails extends Component {
                                     <p>Calidad: </p>
                                     <hr />
                                     <p>Precio: </p>
+                                    <p>{this.state.reviews.length}: </p>
 
 
                                 </div>
@@ -70,6 +82,12 @@ class BarDetails extends Component {
                         {/* <Link to={'/review/new'}> */}
                         <Button variant="primary">Escribir reseña</Button>
                     </Link>
+                    <br></br>
+                    <br></br>
+                    <Link>
+                        <Button variant="primary">Añadir a favoritos</Button>
+                    </Link>
+                    <ReviewList reviews={this.state.reviews}/>
 
                 </Container >
             </>

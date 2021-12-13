@@ -2,15 +2,15 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
-import { slide as Menu } from "react-burger-menu";
-
+/* import { slide as Menu } from "react-burger-menu";
+ */
 const authService = new AuthService()
 
 
-const Navigation = (loggedUser, storeUser) => {
+const Navigation = ({loggedUser, storeUser}) => {
     // const Navigation = (props) => {
 
-
+    
     const logout = () => {
         authService.logout()
             // .then(response => props.storeUser(null))

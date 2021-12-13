@@ -49,7 +49,7 @@ class SimpleMap extends Component {
         barService.getAllBarModified()
             .then(response => {
                 const bars = response.data
-                console.log(response.data, "<<<<<<<<<");
+               
 
                 this.setState({ bars: bars })
             })
