@@ -1,5 +1,6 @@
 .bar-card {
     margin-bottom: 40px;
+
 }
 
 .bar-card h3 {
@@ -16,3 +17,13 @@
 .btn-block {
     width: 100%;
 }
+
+.barList{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+}
+

@@ -1,6 +1,9 @@
 const router = require("express").Router()
 const Review = require("../models/Review.model")
 const { isLoggedIn } = require("../middleware");
+const Bar = require('../models/Bar.model')
+const User = require('../models/User.model')
+
 
 
 router.get("/all", isLoggedIn, (req, res) => {
