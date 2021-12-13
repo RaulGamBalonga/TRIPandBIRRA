@@ -4,7 +4,6 @@ const reviewRoutes = require("./review.routes")
 const barRoutes = require("./bar.routes");
 const userRoutes = require('./user.routes')
 
-
 router.get("/", (req, res, next) => {
   res.json("All good in here");
 });

@@ -5,8 +5,6 @@ import './BarPage.css'
 
 function BarCard(props) {
     
-
-
     return (
         <>
 
@@ -20,7 +18,6 @@ function BarCard(props) {
                     <Card.Text>
                         {props.bar.location.coordinates[1]}
                     </Card.Text>
-
 
                     <Link to={`/bar/${props.bar._id}`}>
                         <Button variant="primary">Detalles</Button>

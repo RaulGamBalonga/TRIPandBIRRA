@@ -13,7 +13,6 @@ import BarDetails from './pages/BarDetails/BarDetails';
 // import Footer from './layout/Footer/Footer'
 
 import UserPage from './pages/UserProfile/UserPage';
-
 class App extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +34,6 @@ class App extends Component {
     storeUser = (user) => {
         this.setState({ loggedUser: user })
     }
-
 
     render() {
         return (

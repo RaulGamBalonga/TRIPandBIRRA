@@ -1,7 +1,6 @@
 import React from "react";
 import BarCard from "./barCard"
 
-
 function BarList(props) {
 
     const bars = props.bars
@@ -13,13 +12,11 @@ function BarList(props) {
         })
     }
 
-
     return (
         <>
             {displayBars()}
         </>
     )
 }
-
 
 export default BarList

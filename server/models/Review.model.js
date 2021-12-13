@@ -51,9 +51,6 @@ const reviewSchema = new Schema(
         bar: { type: Schema.Types.ObjectId, ref: 'Bar' },
     },
 
-
-
-
     {
         timestamps: true,
     }

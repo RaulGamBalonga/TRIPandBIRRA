@@ -1,14 +1,14 @@
 const router = require("express").Router()
 const Review = require("../models/Review.model")
+const { isLoggedIn } = require("../middleware");
 
 
-router.get("/all", (req, res) => {
+router.get("/all", isLoggedIn, (req, res) => {
+    console.log(req.session.currentUser)
     Review.find()
         .then(allReviews => res.json(allReviews))
         .catch(err => res.json({ err, errMessage: "Problema buscando reseñas" }))
 })
-
-
 
 router.post("/new", (req, res) => {
     const { comment, image, drink, tapa, price, quality, rating, creator, bar } = req.body
@@ -18,7 +18,7 @@ router.post("/new", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Problema creando reseña" }))
 })
 
-router.get("/:id", (req, res) => {
+router.get("/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
 
     Review.findById(id)

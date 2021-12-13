@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { ToggleButtonGroup, ToggleButton, Form, Button } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
 
-
 export default class NewReviewForm extends Component {
 
     constructor(props) {
@@ -37,7 +36,6 @@ export default class NewReviewForm extends Component {
 
         this.setState({ [name]: selectedOption })
     }
-
 
     render() {
 

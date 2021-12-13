@@ -19,8 +19,6 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(pwd, salt)
 
-
-
       User
         .create({ username, password: hashPass, email })
         .then((user) => res.status(200).json(user))
@@ -31,12 +29,9 @@ router.post('/signup', (req, res) => {
 
 })
 
-
 router.post('/login', (req, res) => {
 
   const { username, password } = req.body
-
- 
 
   User
     .findOne({ username })
@@ -59,15 +54,10 @@ router.post('/login', (req, res) => {
     .catch(err => res.status(500).json({ code: 500, message: 'Error de la BBDD buscando usuario', err }))
 })
 
-
-
 router.get('/logout', (req, res) => {
   console.log(req.session.currentUser)
   req.session.destroy((err) => res.status(200).json({ code: 200, message: 'Sesion cerrada correctamente' }));
 })
-
-
-
 
 router.get("/isloggedin", (req, res) => {
   req.session.currentUser ? res.json(req.session.currentUser) : res.status(401).json({ code: 401, message: 'Accede o registrate' })

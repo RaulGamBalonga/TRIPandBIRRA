@@ -1,15 +1,15 @@
 const router = require("express").Router()
 const User = require("../models/User.model")
+const { isLoggedIn } = require("../middleware");
 
 
-router.get("/all", (req, res) => {
-    Coaster.find()
+router.get("/all", isLoggedIn, (req, res) => {
+    User.find()
         .then(allUsers => res.json(allUsers))
         .catch(err => res.json({ err, errMessage: "Problema buscando usuarios" }))
 })
 
-
-router.put("/edit/:id", (req, res) => {
+router.put("/edit/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
     const { username, email, image, favorites } = req.body
 
@@ -18,8 +18,7 @@ router.put("/edit/:id", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Problema editando usuario" }))
 })
 
-
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
 
     User.findByIdAndDelete(id)
@@ -27,14 +26,12 @@ router.delete("/delete/:id", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Problema borrando usuario" }))
 })
 
-
-router.get("/:id", (req, res) => {
+router.get("/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
 
     User.findById(id)
         .then(theUser => res.json(theUser))
         .catch(err => res.json({ err, errMessage: "Problema buscando un usuario" }))
 })
-
 
 module.exports = router

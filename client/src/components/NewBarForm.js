@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BarService from '../services/bar.service'
 
-
 export default class NewBarForm extends Component {
     constructor(props) {
         super(props)
@@ -33,8 +32,6 @@ export default class NewBarForm extends Component {
 
         this.setState({ [name]: value })
     }
-
-
 
     render() {
         return (

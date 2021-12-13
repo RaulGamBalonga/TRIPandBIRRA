@@ -29,20 +29,23 @@ module.exports = (app) => {
 
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || "super hyper secret key",
-      resave: false,
+      secret: process.env.SESS_SECRET,
+      resave: true,
       saveUninitialized: false,
-      store: MongoStore.create({
-        mongoUrl: MONGO_URI,
-      }),
       cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 365,
-        sameSite: "none",
-        secure: process.env.NODE_ENV === "production",
+        // sameSite: ‘none’,
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24,
       },
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/api/auth',
+      }),
     })
   );
-
+  app.use((req, res, next) => {
+    req.user = req.session.user || null;
+    next();
+  });
   app.use((req, res, next) => {
     req.user = req.session.user || null;
     next();

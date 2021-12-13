@@ -1,5 +1,8 @@
 module.exports = {
+
     isLoggedIn: (req, res, next) => {
-        req.session.currentUser ? next() : res.redirect("/auth/iniciar-sesion")
+        console.log(req.session.currentUser)
+        req.session.currentUser ? next() : res.status(401).json({ code: 401, message: 'Unauthorized' })
     }
+
 }

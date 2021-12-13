@@ -51,7 +51,6 @@ class SimpleMap extends Component {
             .catch(err => console.log(err))
     }
 
-
     static defaultProps = {
         mapId: '601e432217b3abef',
         center: {
@@ -69,7 +68,6 @@ class SimpleMap extends Component {
 
     handleApiLoaded = (map, maps) => {
 
-
         this.state.bars.map(bar => {
 
 
@@ -85,13 +83,8 @@ class SimpleMap extends Component {
             return marker
         })
 
-
     };
-
-
     // AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-
     render() {
         return (
 

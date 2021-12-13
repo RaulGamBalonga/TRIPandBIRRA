@@ -1,14 +1,15 @@
 const router = require("express").Router()
 const Bar = require("../models/Bar.model")
+const { isLoggedIn } = require("../middleware");
 
-router.get("/all", (req, res) => {
+router.get("/all", isLoggedIn, (req, res) => {
+
     Bar.find()
         .then(allBar => res.json(allBar))
         .catch(err => res.json({ err, errMessage: "Problema buscando bares" }))
 })
 
-
-router.post("/new", (req, res) => {
+router.post("/new", isLoggedIn, (req, res) => {
     const { name, latitude, longitude, image } = req.body
 
     const location = {
@@ -21,9 +22,7 @@ router.post("/new", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Hay un problema construyendo el bar" }))
 })
 
-
-//edit bar routes for TODO
-router.put("/editBar/:id", (req, res) => {
+router.put("/editBar/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
     const { name, location, image } = req.body
 
@@ -32,14 +31,13 @@ router.put("/editBar/:id", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Hay un problema reformando el bar" }))
 })
 
-router.delete("/deleteBar/:id", (req, res) => {
+router.delete("/deleteBar/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
 
     Bar.findByIdAndDelete(id)
         .then(deleteBar => res.json({ deleteBar }))
         .catch(err => res.json({ err, errMessage: "Hay un problema eliminando el bar" }))
 })
-
 
 router.get("/markers", (req, res) => {
     Bar.find()
@@ -58,16 +56,12 @@ router.get("/markers", (req, res) => {
         .catch(err => res.json({ err, errMessage: "Problema buscando bares modificados" }))
 })
 
-
-
-router.get("/:id", (req, res) => {
+router.get("/:id", isLoggedIn, (req, res) => {
     const { id } = req.params
 
     Bar.findById(id)
         .then(theBar => res.json(theBar))
         .catch(err => res.json({ err, errMessage: "Hay un problema buscando el bar" }))
 })
-
-
 
 module.exports = router

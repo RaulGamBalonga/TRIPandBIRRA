@@ -40,10 +40,24 @@ class BarDetails extends Component {
                         <article>
                             <h2>{name}</h2>
                             <div>
-                                <p>Latitud:{location?.coordinates[0]}</p>
+                               {/*  <p>Latitud:{location?.coordinates[0]}</p>
                                 <hr />
                                 <br />
-                                <p>Longitud: {location?.coordinates[1]}</p>
+                                <p>Longitud: {location?.coordinates[1]}</p> */}
+                                
+                                <p>Puntuacion</p>
+                                <p>detalles</p>
+                                <p>descripcion</p>
+                                <p>nº de reseñas</p>
+                                <p>bebida top</p>
+                                <p>precio</p>
+                                <p>calidad</p>
+
+
+
+                                <p>escribir reseña, enlace a crear reseña</p>
+
+                                <p>slide con fotos</p>
 
                             </div>
                         </article>

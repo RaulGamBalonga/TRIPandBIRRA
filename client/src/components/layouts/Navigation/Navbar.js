@@ -5,7 +5,6 @@ import AuthService from '../../../services/auth.service'
 
 const authService = new AuthService()
 
-
 const Navigation = ({ loggedUser, storeUser }) => {
 
     const logout = () => {
@@ -39,7 +38,6 @@ const Navigation = ({ loggedUser, storeUser }) => {
                 </Nav>
             </Container>
         </Navbar>
-
     )
 }
 
