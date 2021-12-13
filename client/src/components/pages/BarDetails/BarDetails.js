@@ -67,7 +67,6 @@ class BarDetails extends Component {
                         </Col>
                     </Row>
                     <Link to={`/review/new/${_id}`}>
-                        {/* <Link to={'/review/new'}> */}
                         <Button variant="primary">Escribir reseña</Button>
                     </Link>
 
