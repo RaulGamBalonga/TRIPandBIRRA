@@ -16,7 +16,7 @@ export default class NewReviewForm extends Component {
             price: '',
             quality: '',
             rating: '',
-            bar: this.props.match.params.id,
+            bar: this.props.match.params.id
         }
         this.reviewService = new ReviewService()
 
@@ -51,7 +51,7 @@ export default class NewReviewForm extends Component {
         return (
             <>
                 <Form onSubmit={this.handleSubmit}>
-                    <h2>Has estado de tapeo en {this.state.bar}</h2>
+                    <h2>Has estado de tapeo en {this.state.name}</h2>
                     <hr />
                     <h3>¿QUÉ TE HAS TOMADO?</h3>
                     <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>
