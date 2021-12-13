@@ -22,7 +22,6 @@ class LoginPage extends Component {
                 this.props.storeUser(response.data)
 
                 this.props.history.push("/")
-
             })
             .catch(err => console.log(err.response.data.message))
     }

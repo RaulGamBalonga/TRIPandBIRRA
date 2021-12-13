@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ToggleButtonGroup, ToggleButton, Form, Button } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
 import BarService from '../services/bar.service';
+import UploadService from '../services/upload.service';
 
 export default class NewReviewForm extends Component {
 
@@ -17,8 +18,11 @@ export default class NewReviewForm extends Component {
             quality: '',
             rating: '',
         }
+        this.barService = new BarService()
         this.reviewService = new ReviewService()
         this.barService = new BarService()
+        this.uploadService = new UploadService()
+
 
     }
 
@@ -45,12 +49,32 @@ export default class NewReviewForm extends Component {
         this.setState({ [name]: selectedOption })
     }
 
+    handleUploadChange = (e) => {
+
+        this.setState()
+
+        const uploadData = new FormData()
+        uploadData.append('image', e.target.files[0])
+
+        this.uploadService
+            .uploadImage(uploadData)
+            .then(response => {
+                this.setState({
+
+                    image: response.data.cloudinary_url
+
+                })
+            })
+            .catch(err => console.log(err))
+
+    }
+
     render() {
 
         return (
             <>
                 <Form onSubmit={this.handleSubmit}>
-                    <h2>¿Qué tal ha ido tu experciencia de tapeo?</h2>
+                    <h2>¿Qué tal ha ido tu experiencia de tapeo? {this.state.bar} </h2>
                     <hr />
                     <h3>¿QUÉ TE HAS TOMADO?</h3>
                     <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>
@@ -116,7 +140,12 @@ export default class NewReviewForm extends Component {
                             Buena
                         </ToggleButton>
                     </ToggleButtonGroup >
+                    <hr />
 
+                    <Form.Group controlId="image">
+                        <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>
+                        <Form.Control onChange={this.handleUploadChange} name="image" type="file" />
+                    </Form.Group>
                     <hr />
                     <Button variant="primary" type="submit">
                         Enviar reseña

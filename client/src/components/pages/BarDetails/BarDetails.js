@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
+<<<<<<< HEAD
 import ReviewList from "../BarList/ReviewList";
+=======
+>>>>>>> ae7e3280438b3a9ce14012dd48294cf60634325c
 
 class BarDetails extends Component {
     constructor(props) {
@@ -29,9 +32,9 @@ class BarDetails extends Component {
         this.barService.getOneBar(id)
             .then(response => {
 
-                const { _id, name, location, image } = response.data
+                const { _id, name, location, image, reviewImage } = response.data
 
-                this.setState({ _id, name, location, image })
+                this.setState({ _id, name, location, image, reviewImage })
             })
             .catch(err => console.log(err))
 
@@ -50,12 +53,12 @@ class BarDetails extends Component {
         return (
             <>
                 <Container>
-                    <h1>Detalles</h1>
+                    <h2>DETALLES</h2>
 
                     <Row className="justify-content-around">
                         <Col md={6} style={{ overflow: "hidden" }}>
                             <article>
-                                <h2>{name}</h2>
+                                <h3>{name}</h3>
                                 <div>
                                     <p>Latitud:{location?.coordinates[0]}</p>
                                     <hr />
@@ -79,7 +82,6 @@ class BarDetails extends Component {
                         </Col>
                     </Row>
                     <Link to={`/review/new/${_id}`}>
-                        {/* <Link to={'/review/new'}> */}
                         <Button variant="primary">Escribir reseña</Button>
                     </Link>
                     <br></br>
