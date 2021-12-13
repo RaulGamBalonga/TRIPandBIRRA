@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ToggleButtonGroup, ToggleButton, Form, Button } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
+import BarService from '../services/bar.service';
 
 
 export default class NewReviewForm extends Component {
@@ -15,14 +16,20 @@ export default class NewReviewForm extends Component {
             price: '',
             quality: '',
             rating: '',
+            bar: this.props.match.params.id,
         }
-        this.service = new ReviewService()
+        this.reviewService = new ReviewService()
 
     }
 
+    // 1. ya tenemos el id del bar en la url
+    // 2. cuando el componente se monta, hacemos que ese id se guarde en 'bar' en el estado
+    // 3. si queremos que salga el nombre del bar, hay que llamar al bar service para traer sus datos y poder guardarlos en el estado
+    // 4. para crear una reseña, hay que pasarle tambien el id del bar para el que se crea y tambien el id del usuario que la crea (logged user)
+
     handleSubmit = (e) => {
         e.preventDefault();
-        this.service.createReview(this.state)
+        this.reviewService.createReview(this.state)
             .then(response => {
 
                 this.props.history.push("/")
@@ -43,8 +50,8 @@ export default class NewReviewForm extends Component {
 
         return (
             <>
-                <h2>Has estado de tapeo en BARNAME</h2>
                 <Form onSubmit={this.handleSubmit}>
+                    <h2>Has estado de tapeo en {this.state.bar}</h2>
                     <hr />
                     <h3>¿QUÉ TE HAS TOMADO?</h3>
                     <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>

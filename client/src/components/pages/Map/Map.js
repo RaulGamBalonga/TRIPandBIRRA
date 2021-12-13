@@ -107,6 +107,7 @@ class SimpleMap extends Component {
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
+                    onClick={e => console.log(e)}
                 >
 
                     {

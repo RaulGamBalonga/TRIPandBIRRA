@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 
@@ -8,29 +8,33 @@ class BarDetails extends Component {
         super()
 
         this.state = {
+            _id: "",
             name: "",
             location: undefined,
             image: ""
         }
 
-        this.service = new BarService()
+        this.barService = new BarService()
+
+
     }
 
     componentDidMount() {
         const id = this.props.match.params.id
 
-        this.service.getOneBar(id)
+        this.barService.getOneBar(id)
             .then(response => {
 
-                const { name, location, image } = response.data
+                const { _id, name, location, image } = response.data
 
-                this.setState({ name, location, image })
+                this.setState({ _id, name, location, image })
             })
             .catch(err => console.log(err))
+
     }
 
     render() {
-        const { name, location, image } = this.state
+        const { name, location, image, _id } = this.state
         console.log("el estado en cada render", this.state)
         return (
             <>
@@ -44,8 +48,16 @@ class BarDetails extends Component {
                                 <div>
                                     <p>Latitud:{location?.coordinates[0]}</p>
                                     <hr />
-                                    <br />
                                     <p>Longitud: {location?.coordinates[1]}</p>
+                                    <hr />
+                                    <p>Lo más pedido:</p>
+                                    <hr />
+                                    <p>La tapa más puesta: </p>
+                                    <hr />
+                                    <p>Calidad: </p>
+                                    <hr />
+                                    <p>Precio: </p>
+
 
                                 </div>
                             </article>
@@ -54,12 +66,12 @@ class BarDetails extends Component {
                             {/* <img className="detailsImg" src={image} alt={name} ></img> */}
                         </Col>
                     </Row>
-                    <h4>
-                        <Nav.Link as={Link} to="/review/new">Escribir reseña</Nav.Link>
-                    </h4>
+                    <Link to={`/review/new/${_id}`}>
+                        {/* <Link to={'/review/new'}> */}
+                        <Button variant="primary">Escribir reseña</Button>
+                    </Link>
+
                 </Container >
-
-
             </>
 
         )
