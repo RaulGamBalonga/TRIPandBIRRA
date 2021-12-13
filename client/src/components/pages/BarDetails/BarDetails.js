@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
+import ReviewService from "../../../services/review.service";
 
 class BarDetails extends Component {
     constructor(props) {
@@ -11,12 +12,12 @@ class BarDetails extends Component {
             _id: "",
             name: "",
             location: undefined,
-            image: ""
+            image: "",
+            reviewImage: "",
         }
 
         this.barService = new BarService()
-
-
+        this.reviewService = new ReviewService()
     }
 
     componentDidMount() {
@@ -25,26 +26,25 @@ class BarDetails extends Component {
         this.barService.getOneBar(id)
             .then(response => {
 
-                const { _id, name, location, image } = response.data
+                const { _id, name, location, image, reviewImage } = response.data
 
-                this.setState({ _id, name, location, image })
+                this.setState({ _id, name, location, image, reviewImage })
             })
             .catch(err => console.log(err))
 
     }
 
     render() {
-        const { name, location, image, _id } = this.state
-        console.log("el estado en cada render", this.state)
+        const { name, location, image, reviewImage, _id } = this.state
         return (
             <>
                 <Container>
-                    <h1>Detalles</h1>
+                    <h2>DETALLES</h2>
 
                     <Row className="justify-content-around">
                         <Col md={6} style={{ overflow: "hidden" }}>
                             <article>
-                                <h2>{name}</h2>
+                                <h3>{name}</h3>
                                 <div>
                                     <p>Latitud:{location?.coordinates[0]}</p>
                                     <hr />
@@ -57,8 +57,6 @@ class BarDetails extends Component {
                                     <p>Calidad: </p>
                                     <hr />
                                     <p>Precio: </p>
-
-
                                 </div>
                             </article>
                         </Col>
@@ -69,6 +67,10 @@ class BarDetails extends Component {
                     <Link to={`/review/new/${_id}`}>
                         <Button variant="primary">Escribir reseña</Button>
                     </Link>
+                    <Card className="user-card" style={{ width: '2rem' }}>
+                        <img src={reviewImage} alt="reviewImages" />
+                    </Card>
+
 
                 </Container >
             </>

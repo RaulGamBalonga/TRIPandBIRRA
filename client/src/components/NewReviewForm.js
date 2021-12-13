@@ -52,7 +52,6 @@ export default class NewReviewForm extends Component {
 
         const uploadData = new FormData()
         uploadData.append('image', e.target.files[0])
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', { uploadData })
 
         this.uploadService
             .uploadImage(uploadData)
