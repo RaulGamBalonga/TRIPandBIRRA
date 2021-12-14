@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
-<<<<<<< HEAD
 import ReviewList from "../BarList/ReviewList";
-=======
->>>>>>> ae7e3280438b3a9ce14012dd48294cf60634325c
+
 
 class BarDetails extends Component {
     constructor(props) {
@@ -17,13 +15,38 @@ class BarDetails extends Component {
             name: "",
             location: undefined,
             image: "",
-            reviews: []
+            reviews: [],
+            drinksArray: [],
+            tapasArray: [],
+            pricesArray: [],
+            qualitiesArray: [],
+            drink: {
+                cerveza: 0,
+                vino: 0,
+                refresco: 0,
+                otros: 0
+            },
+            tapa: {
+                FrutosSecos: 0,
+                Olivas: 0,
+                Fritos: 0,
+                Pinchos: 0,
+                Otros: 0
+            },
+            price: {
+                Mal: 0,
+                Normal: 0,
+                Bien: 0,
+            },
+            quality: {
+                Mala: 0,
+                Buena: 0
+            }
         }
+
 
         this.barService = new BarService()
         this.reviewService = new ReviewService()
-
-
     }
 
     componentDidMount() {
@@ -40,16 +63,58 @@ class BarDetails extends Component {
 
         this.reviewService.getAllReviews(id)
             .then(response => {
-            const reviews = response.data
-            this.setState({...this.state, reviews})
-        })
-                .catch(err => console.log(err))
+                const reviews = response.data
+                this.setState({ ...this.state, reviews })
+            })
+            .then(() => {
+
+
+                this.state.reviews.forEach(review => {
+                    
+                    this.state.drinksArray.push(review.drink)
+                    this.state.tapasArray.push(review.tapa)
+                    this.state.pricesArray.push(review.price)
+                    this.state.qualitiesArray.push(review.quality)
+
+                    const drinksType = { cerveza: 0, vino: 0, refresco: 0, otros: 0 };
+                    this.state.drinksArray.forEach(drink => {
+
+                        if (drink === 'refresco') {
+                            drinksType.refresco++
+                        }
+                        else if (drink === 'cerveza') {
+                            drinksType.cerveza++
+                        }
+                        else if (drink === 'vino') {
+                            drinksType.vino++
+                        }
+                        else {
+                            drinksType.otros++
+                        }
+                    })
+
+                    const qualitiesArray = { mala: 0, buena: 0 };
+                    this.state.qualitiesArray.forEach(quality => {
+
+                        if (quality === 'Mala') {
+                            qualitiesArray.mala++
+                        }
+                        else {
+                            qualitiesArray.buena++
+                        }
+
+                    })
+
+                })
+
+            })
+            .catch(err => console.log(err))
 
     }
 
     render() {
-        const { name, location, image, _id } = this.state
-       
+        const { name, image, _id } = this.state
+
         return (
             <>
                 <Container>
@@ -60,9 +125,6 @@ class BarDetails extends Component {
                             <article>
                                 <h3>{name}</h3>
                                 <div>
-                                    <p>Latitud:{location?.coordinates[0]}</p>
-                                    <hr />
-                                    <p>Longitud: {location?.coordinates[1]}</p>
                                     <hr />
                                     <p>Lo más pedido:</p>
                                     <hr />
@@ -89,7 +151,7 @@ class BarDetails extends Component {
                     <Link>
                         <Button variant="primary">Añadir a favoritos</Button>
                     </Link>
-                    <ReviewList reviews={this.state.reviews}/>
+                    <ReviewList reviews={this.state.reviews} />
 
                 </Container >
             </>
@@ -99,3 +161,4 @@ class BarDetails extends Component {
 }
 
 export default BarDetails
+

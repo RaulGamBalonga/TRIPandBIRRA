@@ -7,10 +7,10 @@ import AuthService from '../../../services/auth.service'
 const authService = new AuthService()
 
 
-const Navigation = ({loggedUser, storeUser}) => {
+const Navigation = ({ loggedUser, storeUser }) => {
     // const Navigation = (props) => {
 
-    
+
     const logout = () => {
         authService.logout()
             // .then(response => props.storeUser(null))
@@ -50,7 +50,7 @@ const Navigation = ({loggedUser, storeUser}) => {
             <Container>
                 <Navbar.Brand href="#home">T&b</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link as={Link} to="/map">Mostrar mapa</Nav.Link>
+                    <Nav.Link as={Link} to="/map">Ver mapa</Nav.Link>
 
                     {loggedUser ?
                         <>
