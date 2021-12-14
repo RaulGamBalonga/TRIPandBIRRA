@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
+import '../Navigation/Navbar.css'
 /* import { slide as Menu } from "react-burger-menu";
  */
 const authService = new AuthService()
@@ -21,32 +22,7 @@ const Navigation = ({ loggedUser, storeUser }) => {
 
     return (
 
-        // <Menu {...props}>
-        //     {/* <Link className="menu-item" to="/">
-        //         Home
-        //     </Link>
-
-        //     <Link className="menu-item" to="/bar">
-        //         Bars
-        //     </Link> */}
-
-        //     {props.loggedUser ?
-        //         <>
-        //             <Link className="menu-item" to="/userprofile">Tu perfil</Link>,
-        //             <Link className="menu-item" to="/bar">Lista bares</Link>
-        //             <Link className="menu-item" to="/bar/new">Crear Bar</Link>
-        //             <Link className="menu-item" to="/review/new">Escribir reseña</Link>
-        //             <Link className="menu-item" as={"span"} onClick={logout}>Salir</Link>
-        //         </>
-        //         :
-        //         <>
-        //             <Link className="menu-item" to="/signup">Registro</Link>
-        //             <Link className="menu-item" to="/login">Entrar</Link>
-        //         </>
-        //     }
-        // </Menu>
-
-        <Navbar bg="dark" variant="dark">
+        <Navbar className='Navi'>
             <Container>
                 <Navbar.Brand href="#home">T&b</Navbar.Brand>
                 <Nav className="me-auto">
@@ -54,7 +30,7 @@ const Navigation = ({ loggedUser, storeUser }) => {
 
                     {loggedUser ?
                         <>
-                            <Nav.Link as={Link} to="/userprofile">Tu perfil</Nav.Link>,
+                            <Nav.Link as={Link} to="/userprofile">Tu perfil</Nav.Link>
                             <Nav.Link as={Link} to="/bar">Lista bares</Nav.Link>
                             <Nav.Link as={Link} to="/bar/new">Crear Bar</Nav.Link>
 

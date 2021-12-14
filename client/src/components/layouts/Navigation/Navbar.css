@@ -1,0 +1,9 @@
+.Navi{
+    background-color: rgba(247, 227, 54, 0.555);
+    color: black;
+}
+
+.Navilink{
+    color: red;
+    text-decoration: solid red;
+}
