@@ -3,6 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import avatar from '../PagesImages/avatarprov.jpg'
 
+
 const UserCard = ({ loggedUser }) => {
 
     const { _id, username, email, image } = loggedUser

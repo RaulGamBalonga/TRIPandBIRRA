@@ -29,6 +29,9 @@ class BarPage extends Component {
       .catch(err => console.log(err))
   }
 
+  // filrtbars()
+  
+
   render() {
 
     return (
@@ -37,6 +40,7 @@ class BarPage extends Component {
         <div className="barList">
           <BarList refreshBars={this.refreshBars} bars={this.state.bars} />
         </div>
+       {/*  <SearchBar filterBars={this.filterBars} /> */}
       </Container>
     )
   }

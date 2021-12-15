@@ -141,6 +141,7 @@ export default class NewReviewForm extends Component {
                         </ToggleButton>
                     </ToggleButtonGroup >
                     <hr />
+                    
 
                     <Form.Group controlId="image">
                         <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 export default class SearchBar extends React.Component {
     state = {
@@ -30,4 +30,4 @@ export default class SearchBar extends React.Component {
             </div>
         );
     }
-}
+} */
