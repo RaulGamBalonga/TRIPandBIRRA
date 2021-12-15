@@ -1,9 +1,25 @@
 .Navi{
     background-color: rgba(247, 227, 54, 0.555);
-    color: black;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+    
 }
 
-.Navilink{
-    color: red;
-    text-decoration: solid red;
+.NavLink{
+    color: black;
+    text-decoration: none;
+    margin: 1px;
+    }
+
+.NavLink:active{
+    color: white;
+}
+
+.NavLink:focus{
+    color: white;
 }

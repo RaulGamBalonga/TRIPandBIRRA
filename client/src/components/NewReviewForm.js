@@ -60,9 +60,7 @@ export default class NewReviewForm extends Component {
             .uploadImage(uploadData)
             .then(response => {
                 this.setState({
-
                     image: response.data.cloudinary_url
-
                 })
             })
             .catch(err => console.log(err))
@@ -80,6 +78,7 @@ export default class NewReviewForm extends Component {
                     <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>
 
                         <ToggleButton id="drink-btn-1" value={'CERVEZA'}>
+                            <img src="" alt="" />
                             Cerveza
                         </ToggleButton>
                         <ToggleButton id="drink-btn-2" value={'VINO'}>

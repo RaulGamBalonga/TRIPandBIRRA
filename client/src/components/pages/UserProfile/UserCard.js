@@ -3,9 +3,16 @@ import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import avatar from '../PagesImages/avatarprov.jpg'
 
-const UserCard = ({ loggedUser }) => {
 
-    const { _id, username, email, image } = loggedUser
+
+
+const UserCard = ({ loggedUser, }) => {
+
+
+
+    const { _id, username, email, image, favorites } = loggedUser
+
+    console.log(loggedUser)
 
     return (
         <Card className="user-card" style={{ width: '18rem' }}>
@@ -15,9 +22,13 @@ const UserCard = ({ loggedUser }) => {
                 <Card.Text>
                     Estas registrado con el correo {email}
                 </Card.Text>
-                <Link to={`/favorites/${_id}`}>
-                    <Button variant="primary">Favoritos</Button>
-                </Link>
+                <Card.Text>
+                    <h3>Tus bares</h3>
+                    {favorites.map(bar => {
+                        return (<p>{bar.name}</p>)
+                    })}
+                </Card.Text>
+
             </Card.Body>
         </Card>
     )

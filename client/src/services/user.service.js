@@ -9,8 +9,9 @@ class UserService {
     }
 
     getAllUser = () => this.app.get("/allUser")
-    getOneUser = (_id) => this.app.get(`/user/${_id}`)
+    getOneUser = () => this.app.get('/one')
     userPage = (username, email, image, favorites) => this.app.get('/userprofile', { username, email, image, favorites })
+    addUserFav = (barId) => this.app.put('/add-favorites', {barId})
 
 }
 

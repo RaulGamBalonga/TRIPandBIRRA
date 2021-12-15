@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
 import ReviewList from "../BarList/ReviewList";
+import UserService from "../../../services/user.service"
 
 
 class BarDetails extends Component {
@@ -24,17 +25,29 @@ class BarDetails extends Component {
             tapas: {},
             price: {},
             quality: {},
-            //TODO: Lo de abajo no es necesario para que se pinte, por qué?
             topDrink: '',
             topTapa: '',
-            // topPrice: '',
-            // topQuality: ''
+            topPrice: '',
+            topQuality: ''
 
         }
 
 
         this.barService = new BarService()
         this.reviewService = new ReviewService()
+        this.userService = new UserService()
+    }
+
+    addFavorites = () => {
+        this.userService.addUserFav(this.state._id)
+            .then(response => {
+                this.props.storeUser(response.data)
+                this.props.history.push("/userprofile")
+            })
+            .catch(err => console.log(err))
+
+
+        // llamar al servicio y pasarle el id del bar
     }
 
     componentDidMount() {
@@ -142,33 +155,21 @@ class BarDetails extends Component {
 
                 this.setState({ ...this.state, price: priceType })
 
-
-                // console.log('PRICE:', priceType);
-                // console.log('QUALITY:', qualityType);
-                // console.log('TAPAS:', tapasType);
-                // console.log('DRINKS:', drinksType);
-
                 const topDrink = Object.keys(this.state.drinks).reduce((a, b) => this.state.drinks[a] > this.state.drinks[b] ? a : b);
                 console.log('>>>>>>>', topDrink)
-                this.setState({ ...this.state, drink: topDrink })
+                this.setState({ ...this.state, topDrink })
 
                 const topTapa = Object.keys(this.state.tapas).reduce((a, b) => this.state.tapas[a] > this.state.tapas[b] ? a : b);
                 console.log('>>>>>>>', topTapa)
-                this.setState({ ...this.state, tapa: topTapa })
+                this.setState({ ...this.state, topTapa })
 
                 const topPrice = Object.keys(this.state.price).reduce((a, b) => this.state.price[a] > this.state.price[b] ? a : b);
                 console.log('>>>>>>>', topPrice)
-                this.setState({ ...this.state, prices: topPrice })
+                this.setState({ ...this.state, topPrice })
 
                 const topQuality = Object.keys(this.state.quality).reduce((a, b) => this.state.quality[a] > this.state.quality[b] ? a : b);
                 console.log('>>>>>>>', topQuality)
-                this.setState({ ...this.state, qualities: topQuality })
-
-
-
-                // const hola = Object.keys(this.state.tapas).reduce((a, b) => this.state.tapas[a] > this.state.tapas[b] ? a : b);
-                // console.log('>>>>>>>', hola)
-
+                this.setState({ ...this.state, topQuality })
             })
             .catch(err => console.log(err))
 
@@ -188,18 +189,14 @@ class BarDetails extends Component {
                                 <h3>{name}</h3>
                                 <div>
                                     <hr />
-                                    <p>Lo más pedido: {this.state.drink} </p>
+                                    <p>Lo más pedido: {this.state.topDrink} </p>
                                     <hr />
-                                    <p>La tapa más puesta: {this.state.tapa} </p>
+                                    <p>La tapa más puesta: {this.state.topTapa} </p>
                                     <hr />
-                                    <p>Calidad: {this.state.qualities} </p>
+                                    <p>Calidad: {this.state.topPrice} </p>
                                     <hr />
-                                    <p>Precio: {this.state.prices} </p>
+                                    <p>Precio: {this.state.topQuality} </p>
                                     <hr />
-
-
-
-
                                 </div>
                             </article>
                         </Col>
@@ -212,9 +209,7 @@ class BarDetails extends Component {
                     </Link>
                     <br></br>
                     <br></br>
-                    <Link>
-                        <Button variant="primary">Añadir a favoritos</Button>
-                    </Link>
+                    <Button variant="primary" onClick={this.addFavorites}>Añadir a favoritos</Button>
                     <ReviewList reviews={this.state.reviews} />
 
                 </Container >
