@@ -1,5 +1,5 @@
 .Navi{
-    background-color: rgba(247, 227, 54, 0.555);
+    background-color: rgba(212, 197, 60, 0);
         height: 50px;
         display: flex;
         flex-direction: row;
@@ -22,4 +22,8 @@
 
 .NavLink:focus{
     color: white;
+}
+
+.NavLink img{
+    width: 50px;
 }
