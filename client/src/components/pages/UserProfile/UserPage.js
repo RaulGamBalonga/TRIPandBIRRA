@@ -18,7 +18,7 @@ class UserPage extends Component {
         this.service.getOneUser()
             .then(response => {
                 const user = response.data
-                this.setState({ user: user })
+                this.props.storeUser(user)
             })
             .catch(err => console.log(err))
     }

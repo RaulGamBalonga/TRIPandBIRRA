@@ -22,10 +22,6 @@ module.exports = (app) => {
     })
   );
 
-  app.use(logger("dev"));
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
-  app.use(cookieParser());
 
   app.use(
     session({
@@ -42,12 +38,19 @@ module.exports = (app) => {
       }),
     })
   );
-  app.use((req, res, next) => {
-    req.user = req.session.user || null;
-    next();
-  });
-  app.use((req, res, next) => {
-    req.user = req.session.user || null;
-    next();
-  });
+
+  app.use(logger("dev"));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cookieParser());
+
+
+  // app.use((req, res, next) => {
+  //   req.user = req.session.user || null;
+  //   next();
+  // });
+  // app.use((req, res, next) => {
+  //   req.user = req.session.user || null;
+  //   next();
+  // });
 };

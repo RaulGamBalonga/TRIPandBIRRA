@@ -34,7 +34,6 @@ const barService = new BarService()
 class SimpleMap extends Component {
     constructor() {
         super()
-        // 1. CREAR ESTADO DE ARRAY DE BARES (COMO EN BAR PAGE)
         this.state = {
             bars: []
         }
@@ -49,7 +48,7 @@ class SimpleMap extends Component {
         barService.getAllBarModified()
             .then(response => {
                 const bars = response.data
-               
+
 
                 this.setState({ bars: bars })
             })
@@ -65,11 +64,6 @@ class SimpleMap extends Component {
         zoom: 15
 
     };
-
-    // 2. EN EL BAR SERVICE CREAR UN MÉTODO QUE TRAIGA LOS BARES MODIFICADOS DE BAR ROUTES, 
-    // 3. CREAR MÉTODO QUE TRAIGA TODOS LOS BARES DEL SERVICIO Y LOS GUARDE EN EL ESTADO
-    // 4. CUANDO EL COMPONENTE SE MONTA, LLAMAMOS A LA FUNCIÓN QUE HEMOS CREADO
-    // 5. CUANDO YA TENGAMOS LOS BARES EN EL ESTADO, ESO ES LO QUE LE PASAMOS AL RESTO DE FUNCIONES (bars)
 
     handleApiLoaded = (map, maps) => {
 
@@ -89,11 +83,10 @@ class SimpleMap extends Component {
         })
 
     };
-    // AnyReactComponent = ({ text }) => <div>{text}</div>;
     render() {
         return (
 
-            <div style={{ height: '100vh', width: '100%' }}>
+            <div className='mapSize' style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyAp26dh8ZtMz9K0_fGmQ-Cd30fa7REb65Q' }}
                     defaultCenter={this.props.center}
@@ -102,7 +95,6 @@ class SimpleMap extends Component {
                     onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
                     onClick={e => console.log(e)}
                 >
-
                     {
                         this.state.bars.map(bar => {
                             return (

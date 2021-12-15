@@ -42,13 +42,13 @@ export default class NewBarForm extends Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Longitud</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.description} name="longitude" type="text" />
+                    <Form.Label>Latitud</Form.Label>
+                    <Form.Control onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="length">
-                    <Form.Label>latitud</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.length} name="latitude" type="text" />
+                    <Form.Label>Longitud</Form.Label>
+                    <Form.Control onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="imageUrl">

@@ -64,8 +64,8 @@ class App extends Component {
                                 <Redirect to="/login" />
                             </Switch>
                         }
-                        <div id="page-wrap">
-                            <Map />
+                        <div>
+                            <Map/>
                         </div>
                     </main>
                 </div>
