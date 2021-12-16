@@ -65,7 +65,7 @@ class SimpleMap extends Component {
     };
 
     handleApiLoaded = (map, maps) => {
-        this.state.bars.map(bar => {
+        this.state.bars?.map(bar => {
             let marker = new maps.Marker({
                 image: '',
                 position: {

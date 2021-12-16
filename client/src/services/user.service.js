@@ -3,7 +3,7 @@ import axios from 'axios'
 class UserService {
     constructor() {
         this.app = axios.create({
-            baseURL: 'REACT_APP_BASE_URL/user',
+            baseURL: `${process.env.REACT_APP_BASE_URL}/user`,
             withCredentials: true
         })
     }

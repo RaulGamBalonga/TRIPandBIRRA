@@ -3,7 +3,7 @@ import axios from 'axios'
 class UploadService {
     constructor() {
         this.app = axios.create({
-            baseURL: 'REACT_APP_BASE_URL/upload'
+            baseURL: `${process.env.REACT_APP_BASE_URL}/upload`,
         })
     }
 
