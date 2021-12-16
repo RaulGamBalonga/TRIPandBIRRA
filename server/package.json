@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "REACT_APP_BASE_URL=http://localhost:5005/api react-scripts start",
+    "build": "REACT_APP_BASE_URL=https://trip-n-birra.herokuapp.com//api react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
