@@ -12,8 +12,8 @@ import BarPage from "./pages/BarList/BarPage";
 import NewBarForm from './NewBarForm';
 import NewReviewForm from './NewReviewForm'
 import BarDetails from './pages/BarDetails/BarDetails';
+import '../components/App.css'
 // import Footer from './layout/Footer/Footer'
-import './pages/Menu/MenuStyles.css'
 
 import UserPage from './pages/UserProfile/UserPage';
 class App extends Component {
@@ -44,7 +44,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <div id="App">
+                <div className='transparentBG' id="App">
                     <Navbar storeUser={this.storeUser} loggedUser={this.state.loggedUser} pageWrapId={"page-wrap"} outerContainerId={"App"} />
                     <main>
 
@@ -61,11 +61,11 @@ class App extends Component {
                             <Switch>
                                 <Route path="/signup" render={(props) => <SignupPage {...props} storeUser={this.storeUser} />} />
                                 <Route path="/login" render={(props) => <LoginPage {...props} storeUser={this.storeUser} />} />
-                                <Redirect to="/login" />
+                                <Redirect to="/" />
                             </Switch>
                         }
                         <div>
-                            <Map/>
+                            <Map />
                         </div>
                     </main>
                 </div>

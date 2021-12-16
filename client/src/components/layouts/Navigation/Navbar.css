@@ -1,19 +1,25 @@
+*{
+    background: none;
+
+}
+
+
 .Navi{
-    background-color: rgba(212, 197, 60, 0);
+        background:linear-gradient(to top, rgba(255, 238, 0, 0.753), rgba(255, 255, 255, 0.479));
         height: 50px;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-around;
+        justify-content:center;
         align-items: center;
         align-content: center;
-    
+        border-radius: 10%;
+}
+.transparentBG{
+    /* background-color: transparent !important; */
 }
 
 .NavLink{
-    color: black;
-    text-decoration: none;
-    margin: 1px;
+    margin: 1px 10px;
     }
 
 .NavLink:active{
@@ -25,5 +31,5 @@
 }
 
 .NavLink img{
-    width: 50px;
+    width: 45px;
 }

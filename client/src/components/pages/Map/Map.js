@@ -6,7 +6,7 @@ import './Map.css'
 
 //TODO: llevar todos los estilos al .css
 const AnyReactComponent = ({ text }) => <div className='textArea'>
-    <p style={{ width: '100%', display: 'block' }}>{text}</p>
+    <p>{text}</p>
 </div>;
 
 const barService = new BarService()
@@ -36,6 +36,7 @@ class SimpleMap extends Component {
         super()
         this.state = {
             bars: []
+
         }
 
     }
@@ -48,8 +49,6 @@ class SimpleMap extends Component {
         barService.getAllBarModified()
             .then(response => {
                 const bars = response.data
-
-
                 this.setState({ bars: bars })
             })
             .catch(err => console.log(err))
@@ -66,11 +65,9 @@ class SimpleMap extends Component {
     };
 
     handleApiLoaded = (map, maps) => {
-
         this.state.bars.map(bar => {
-
-
             let marker = new maps.Marker({
+                image: '',
                 position: {
                     lat: bar.lat,
                     lng: bar.lng
