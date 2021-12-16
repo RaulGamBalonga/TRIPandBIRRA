@@ -33,33 +33,34 @@ class SignupPage extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col md={{ span: 4, offset: 4 }}>
-                        <h2>Registro</h2>
+            <div>
+                <h2>Registrate</h2>
+                <hr />
+                <div onSubmit={this.handleSubmit}>
+                    <form>
+                        <label>
+                            <p>Tu nombre de usuario/a</p>
+                            <input onChange={this.handleInputChange} value={this.state.username} name="username" type="text" placeholder="Escribe nombre de usuario/a" />
+                        </label>
+                        <br />
+                        <label>
+                            <p>Tu correo electrónico</p>
+                            <input onChange={this.handleInputChange} value={this.state.email} name="email" type="text" placeholder="email" />
+                        </label>
 
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Group className="mb-3" controlId="username">
-                                <Form.Label>Tu nombre de usuario/a</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.username} name="username" type="text" placeholder="Elige un nombre de usuario/a" />
-                            </Form.Group>
+                        <div>
+                            <label>
+                                <p>Contraseña</p>
+                                <input onChange={this.handleInputChange} value={this.state.password} name="password" type="password" placeholder="Contraseña" />
+                            </label>
+                        </div>
 
-                            <Form.Group className="mb-3" controlId="email">
-                                <Form.Label>Tu correo electrónico</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.email} name="email" type="text" placeholder="email" />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="password">
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.password} name="password" type="password" placeholder="Contraseña" />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Registrate
-                            </Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
+                        <button type="submit">
+                            Registrate
+                        </button>
+                    </form>
+                </div>
+            </div>
         )
     }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Row, Col } from 'react-bootstrap'
+// import { Container, Form, Button, Row, Col } from 'react-bootstrap'
 import AuthService from '../../../services/auth.service'
 
 class LoginPage extends Component {
@@ -33,33 +33,29 @@ class LoginPage extends Component {
 
     render() {
         return (
-            (
-                <Container>
-                    <Row>
+            <div>
+                <h2>Entra a tu cuenta</h2>
+                <hr />
+                <div onSubmit={this.handleSubmit}>
+                    <form>
+                        <label>
+                            <p>Tu nombre de usuario/a</p>
+                            <input onChange={this.handleInputChange} value={this.state.username} name="username" type="text" placeholder="Escribe nombre de usuario/a" />
+                        </label>
 
-                        <Col md={{ span: 4, offset: 4 }}>
-                            <h2>Entra a tu cuenta</h2>
+                        <div>
+                            <label>
+                                <p>Contraseña</p>
+                                <input onChange={this.handleInputChange} value={this.state.pwd} name="password" type="password" placeholder="Contraseña" />
+                            </label>
+                        </div>
 
-                            <hr />
-
-                            <Form onSubmit={this.handleSubmit}>
-                                <Form.Group className="mb-3" controlId="username">
-                                    <Form.Label>Tu nombre de usuario/a</Form.Label>
-                                    <Form.Control onChange={this.handleInputChange} value={this.state.username} name="username" type="text" placeholder="Escribe nombre de usuario/a" />
-                                </Form.Group>
-
-                                <Form.Group className="mb-3" controlId="password">
-                                    <Form.Label>Contraseña</Form.Label>
-                                    <Form.Control onChange={this.handleInputChange} value={this.state.pwd} name="password" type="password" placeholder="Contraseña" />
-                                </Form.Group>
-
-                                <Button variant="primary" type="submit">
-                                    Entrar
-                                </Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                </Container>)
+                        <button type="submit">
+                            Entrar
+                        </button>
+                    </form>
+                </div>
+            </div>
         )
     }
 
