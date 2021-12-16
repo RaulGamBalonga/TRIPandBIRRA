@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BarService from '../services/bar.service'
+import SimpleMap from './pages/Map/Map'
 
 export default class NewBarForm extends Component {
     constructor(props) {
@@ -8,8 +9,8 @@ export default class NewBarForm extends Component {
 
         this.state = {
             name: "",
-            longitude: "",
             latitude: "",
+            longitude: "",
             image: ""
         }
 
@@ -43,6 +44,7 @@ export default class NewBarForm extends Component {
 
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Latitud</Form.Label>
+                    {/* {SimpleMap.onClick.lat} */}
                     <Form.Control onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
                 </Form.Group>
 
@@ -57,7 +59,7 @@ export default class NewBarForm extends Component {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Submit
+                    Enviar
                 </Button>
             </Form>
         )

@@ -20,7 +20,6 @@ class LoginPage extends Component {
         this.authService.login(this.state.username, this.state.password)
             .then(response => {
                 this.props.storeUser(response.data)
-
                 this.props.history.push("/")
             })
             .catch(err => console.log(err.response.data.message))
