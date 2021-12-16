@@ -71,7 +71,7 @@ export default class NewReviewForm extends Component {
 
         return (
             <>
-                <Form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <h2>¿Qué tal ha ido tu experiencia de tapeo? {this.state.bar} </h2>
                     <hr />
                     <h3>¿QUÉ TE HAS TOMADO?</h3>
@@ -140,7 +140,7 @@ export default class NewReviewForm extends Component {
                         </ToggleButton>
                     </ToggleButtonGroup >
                     <hr />
-                    
+
 
                     <Form.Group controlId="image">
                         <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>
@@ -151,7 +151,7 @@ export default class NewReviewForm extends Component {
                         Enviar reseña
                     </Button>
                     <hr />
-                </Form>
+                </form>
 
             </>
         );

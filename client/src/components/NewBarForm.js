@@ -9,17 +9,29 @@ export default class NewBarForm extends Component {
 
         this.state = {
             name: "",
-            latitude: "",
-            longitude: "",
+            latitude: undefined,
+            longitude: undefined,
             image: ""
         }
 
-        this.service = new BarService()
+        this.barservice = new BarService()
+        this.mapservice = new SimpleMap()
+    }
+
+    // componentDidMount() {
+    //     this.setState({ ...this.state, latitude: this.props.selectedLocation.latitude, longitude: this.props.selectedLocation.longitude })
+    // }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.selectedLocation !== this.props.selectedLocation) {
+            this.setState({ ...this.state, latitude: this.props.selectedLocation.latitude, longitude: this.props.selectedLocation.longitude })
+            console.log('heyyyyyyyyyyyyyy')
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.service.createBar(this.state)
+        this.barservice.createBar(this.state)
             .then(response => {
 
                 this.props.history.push("/bar")
@@ -36,32 +48,63 @@ export default class NewBarForm extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Group className="mb-3" controlId="title">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
-                </Form.Group>
+            <>
+                <p>Toca en el mapa donde quieres situar el nuevo bar</p>
+                <form onSubmit={this.handleSubmit}>
+                    <form controlId="title">
+                        <label>Name</label>
+                        <input onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
+                    </form>
 
-                <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Latitud</Form.Label>
-                    {/* {SimpleMap.onClick.lat} */}
-                    <Form.Control onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
-                </Form.Group>
+                    {/* <form controlId="description">
+                    <label>Latitud</label>
+                    <input onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
+                </form>
 
-                <Form.Group className="mb-3" controlId="length">
-                    <Form.Label>Longitud</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
-                </Form.Group>
+                <form controlId="length">
+                    <label>Longitud</label>
+                    <input onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
+                </form> */}
 
-                <Form.Group className="mb-3" controlId="imageUrl">
-                    <Form.Label>Url de la imagen</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
-                </Form.Group>
+                    <form className="mb-3" controlId="imageUrl">
+                        <label>Url de la imagen</label>
+                        <input onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
+                    </form>
 
-                <Button variant="primary" type="submit">
-                    Enviar
-                </Button>
-            </Form>
+                    <button variant="primary" type="submit">
+                        Enviar
+                    </button>
+                </form>
+            </>
         )
     }
 }
+
+
+
+ // <Form onSubmit={this.handleSubmit}>
+            //     <Form.Group className="mb-3" controlId="title">
+            //         <Form.Label>Name</Form.Label>
+            //         <Form.Control onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
+            //     </Form.Group>
+
+            //     <Form.Group className="mb-3" controlId="description">
+            //         <Form.Label>Latitud</Form.Label>
+            //         {/* {SimpleMap.onClick.lat} */}
+            //         <Form.Control onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
+            //     </Form.Group>
+
+            //     <Form.Group className="mb-3" controlId="length">
+            //         <Form.Label>Longitud</Form.Label>
+            //         <Form.Control onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
+            //     </Form.Group>
+
+            //     <Form.Group className="mb-3" controlId="imageUrl">
+            //         <Form.Label>Url de la imagen</Form.Label>
+            //         <Form.Control onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
+            //     </Form.Group>
+
+            //     <Button variant="primary" type="submit">
+            //         Enviar
+            //     </Button>
+            // </Form>

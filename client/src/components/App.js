@@ -21,7 +21,8 @@ class App extends Component {
         super(props)
 
         this.state = {
-            loggedUser: undefined
+            loggedUser: undefined,
+            selectedLocation: {}
         }
 
         this.authService = new AuthService()
@@ -36,7 +37,11 @@ class App extends Component {
     }
 
     storeUser = (user) => {
-        this.setState({ loggedUser: user })
+        this.setState({ ...this.state, loggedUser: user })
+    }
+
+    storeSelectedLocation = (latitude, longitude) => {
+        this.setState({ ...this.state, selectedLocation: { latitude, longitude } })
     }
 
 
@@ -52,7 +57,7 @@ class App extends Component {
 
                             <Switch>
                                 <Route exact path="/bar" render={(props) => <BarPage {...props} storeUser={this.storeUser} />} />
-                                <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} />} />
+                                <Route exact path="/bar/new" render={(props) => <NewBarForm {...props} storeUser={this.storeUser} selectedLocation={this.state.selectedLocation} />} />
                                 <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
                                 <Route exact path="/review/new/:id" render={(props) => <NewReviewForm {...props} storeUser={this.storeUser} />} />
@@ -65,7 +70,7 @@ class App extends Component {
                             </Switch>
                         }
                         <div>
-                            <Map />
+                            <Map storeSelectedLocation={this.storeSelectedLocation} />
                         </div>
                     </main>
                 </div>

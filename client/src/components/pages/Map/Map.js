@@ -2,33 +2,17 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import BarService from "../../../services/bar.service";
 import './Map.css'
+import mapPoint from './MapImg/mappoint.png'
 
 
-//TODO: llevar todos los estilos al .css
-const AnyReactComponent = ({ text }) => <div className='textArea'>
-    <p>{text}</p>
-</div>;
+const BarInMap = ({ text }) =>
+    <div>
+        <img className='mapPoint' src={mapPoint} alt='mapBarPoint' />
+        {/* <p>{text}</p> */}
+    </div>;
 
 const barService = new BarService()
 
-// const bars = [
-//     {
-//         lat: 40.39239323461082,
-//         lng: -3.696869125314842,
-//         text: "Francachela"
-//     },
-//     {
-//         lat: 40.39261942651223,
-//         lng: -3.6987407073855505,
-//         text: "Ironhack"
-//     },
-//     {
-//         lat: 40.39179939494759,
-//         lng: -3.6948590947565214,
-//         text: "El Mirador de Legazpi"
-//     },
-
-// ]
 
 
 class SimpleMap extends Component {
@@ -54,6 +38,12 @@ class SimpleMap extends Component {
             .catch(err => console.log(err))
     }
 
+    updateSelectedLocation = (e) => {
+        const { lat, lng } = e
+        this.props.storeSelectedLocation(lat, lng)
+    }
+
+
     static defaultProps = {
         mapId: '601e432217b3abef',
         center: {
@@ -64,22 +54,7 @@ class SimpleMap extends Component {
 
     };
 
-    handleApiLoaded = (map, maps) => {
-        this.state.bars?.map(bar => {
-            let marker = new maps.Marker({
-                image: '',
-                position: {
-                    lat: bar.lat,
-                    lng: bar.lng
-                },
-                map,
-                title: bar.text
-            });
 
-            return marker
-        })
-
-    };
     render() {
         return (
 
@@ -88,23 +63,21 @@ class SimpleMap extends Component {
                     bootstrapURLKeys={{ key: 'AIzaSyAp26dh8ZtMz9K0_fGmQ-Cd30fa7REb65Q' }}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
-                    yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => this.handleApiLoaded(map, maps)}
-                    onClick={e => console.log(e)}
+                    yesIWantToUseGoogleMapApiInternals={true}
+                    onClick={this.updateSelectedLocation}
                 >
                     {
                         this.state.bars.map(bar => {
                             return (
-                                <AnyReactComponent
+                                <BarInMap
                                     lat={bar.lat}
                                     lng={bar.lng}
                                     text={bar.text}
+
                                 />
                             )
                         })
                     }
-
-
                 </GoogleMapReact>
             </div>
         );

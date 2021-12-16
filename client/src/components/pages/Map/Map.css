@@ -1,7 +1,3 @@
-.textArea{
-background-color: rgba(231, 221, 128, 0.24);
-padding: 5px;
-border-radius: 10px;
-display: block;
-min-width: 100px;
+.mapPoint{
+ width: 60px;
 }

@@ -7,7 +7,7 @@ const { isADMIN } = require("../utils")
 
 router.post('/signup', (req, res) => {
   const { username, pwd, email } = req.body
- 
+
   User
     .findOne({ username })
     .then(user => {
@@ -21,9 +21,12 @@ router.post('/signup', (req, res) => {
 
       User
         .create({ username, password: hashPass, email })
-        .then((user) => res.status(200).json(user))
+        .then((user) => {
+          req.session.currentUser = user
+          res.status(200).json(user)
+        })
         .catch(err => res.status(500).json({ code: 500, message: "Error de BBDD al crear usuario", err: err.message }))
-     
+
     })
     .catch(err => res.status(500).json({ code: 500, message: "Error de BBDD al buscar usuario", err: err.message }))
 
