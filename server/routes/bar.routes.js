@@ -45,6 +45,7 @@ router.get("/markers", (req, res) => {
 
             const modifiedBars = allBar.map(bar => {
                 return {
+                    _id: bar._id,
                     text: bar.name,
                     lat: bar.location.coordinates[0],
                     lng: bar.location.coordinates[1]

@@ -29,7 +29,6 @@ class BarDetails extends Component {
             topTapa: '',
             topPrice: '',
             topQuality: ''
-
         }
 
 
@@ -45,19 +44,25 @@ class BarDetails extends Component {
                 this.props.history.push("/userprofile")
             })
             .catch(err => console.log(err))
-
-
-        // llamar al servicio y pasarle el id del bar
     }
 
     componentDidMount() {
+        this.getBarDetails()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.getBarDetails()
+        }
+    }
+
+    getBarDetails() {
         const id = this.props.match.params.id
 
         this.barService.getOneBar(id)
             .then(response => {
 
                 const { _id, name, location, image, reviewImage } = response.data
-
                 this.setState({ _id, name, location, image, reviewImage })
             })
             .catch(err => console.log(err))
@@ -156,24 +161,21 @@ class BarDetails extends Component {
                 this.setState({ ...this.state, price: priceType })
 
                 const topDrink = Object.keys(this.state.drinks).reduce((a, b) => this.state.drinks[a] > this.state.drinks[b] ? a : b);
-                console.log('>>>>>>>', topDrink)
                 this.setState({ ...this.state, topDrink })
 
                 const topTapa = Object.keys(this.state.tapas).reduce((a, b) => this.state.tapas[a] > this.state.tapas[b] ? a : b);
-                console.log('>>>>>>>', topTapa)
                 this.setState({ ...this.state, topTapa })
 
                 const topPrice = Object.keys(this.state.price).reduce((a, b) => this.state.price[a] > this.state.price[b] ? a : b);
-                console.log('>>>>>>>', topPrice)
                 this.setState({ ...this.state, topPrice })
 
                 const topQuality = Object.keys(this.state.quality).reduce((a, b) => this.state.quality[a] > this.state.quality[b] ? a : b);
-                console.log('>>>>>>>', topQuality)
                 this.setState({ ...this.state, topQuality })
             })
             .catch(err => console.log(err))
-
     }
+
+
 
     render() {
         const { name, image, _id } = this.state
