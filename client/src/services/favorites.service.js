@@ -3,7 +3,7 @@ import axios from 'axios'
 class FavrService {
     constructor() {
         this.app = axios.create({
-            baseURL: 'http://localhost:5005/api/favorites',
+            baseURL: 'REACT_APP_BASE_URL/favorites',
             withCredentials: true
         })
     }
