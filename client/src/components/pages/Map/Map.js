@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap'
 import GoogleMapReact from 'google-map-react';
 import BarService from "../../../services/bar.service";
 import './Map.css'
@@ -8,9 +7,9 @@ import mapPoint from './MapImg/mappoint.png'
 
 //TODO: llevar todos los estilos al .css
 const BarInMap = (props) => <div className='textArea'>
-    <img className='mapPoint' src={mapPoint} alt='mapBarPoint' />
     <Link to={`/bar/${props.barId}`}>
-        <Button variant="primary">{props.text}</Button>
+        <img className='mapPoint' src={mapPoint} alt='mapBarPoint' />
+        {/* <b>{props.text}</b> */}
     </Link>
 </div>;
 

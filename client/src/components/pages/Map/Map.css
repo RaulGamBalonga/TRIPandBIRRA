@@ -1,3 +1,14 @@
 .mapPoint{
  width: 60px;
 }
+
+.mapButton {
+   border: 0;
+   background-color: rgb(192, 230, 252);
+   width:min-content;
+   height: min-content;
+   border-radius: 25%;
+   text-align:justify;
+    
+
+}

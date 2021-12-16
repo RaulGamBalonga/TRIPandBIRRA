@@ -49,7 +49,6 @@ export default class NewBarForm extends Component {
     render() {
         return (
             <>
-                <p>Toca en el mapa donde quieres situar el nuevo bar</p>
                 <form onSubmit={this.handleSubmit}>
                     <form controlId="title">
                         <label>Name</label>
@@ -59,9 +58,9 @@ export default class NewBarForm extends Component {
                     {/* <form controlId="description">
                     <label>Latitud</label>
                     <input onChange={this.handleInputChange} value={this.state.description} name="latitude" type="text" />
-                </form>
-
-                <form controlId="length">
+                    </form>
+                    
+                    <form controlId="length">
                     <label>Longitud</label>
                     <input onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
                 </form> */}
@@ -71,6 +70,7 @@ export default class NewBarForm extends Component {
                         <input onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
                     </form>
 
+                    <p>¡Toca en el mapa el lugar donde está el bar! Te rogamos aumentes el zoom en el mapa para mejorar la localización</p>
                     <button variant="primary" type="submit">
                         Enviar
                     </button>

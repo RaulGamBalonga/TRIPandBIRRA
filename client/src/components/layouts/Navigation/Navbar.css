@@ -6,7 +6,7 @@
 
 .Navi{
         background:linear-gradient(to top, rgba(255, 238, 0, 0.753), rgba(255, 255, 255, 0.479));
-        height: 50px;
+        height: 60px;
         display: flex;
         flex-direction: row;
         justify-content:center;
@@ -32,4 +32,8 @@
 
 .NavLink img{
     width: 45px;
+}
+
+#NavLogo {
+width: 60px;
 }

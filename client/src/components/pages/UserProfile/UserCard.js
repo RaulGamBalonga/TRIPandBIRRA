@@ -1,36 +1,33 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import avatar from '../PagesImages/avatarprov.jpg'
+import './UserProfile.css'
 
 
 
 
 const UserCard = ({ loggedUser, }) => {
 
-
-
     const { _id, username, email, image, favorites } = loggedUser
-
-    console.log(loggedUser)
-
+    // console.log(loggedUser)
     return (
-        <Card className="user-card" style={{ width: '18rem' }}>
-            <img src={avatar} alt="Avatar" />
-            <Card.Body>
-                <Card.Title>¡Bienvenido {username}!</Card.Title>
-                <Card.Text>
-                    Estas registrado con el correo {email}
-                </Card.Text>
-                <Card.Text>
-                    <h3>Tus bares</h3>
-                    {favorites.map(bar => {
-                        return (<p>{bar.name}</p>)
-                    })}
-                </Card.Text>
+        <main className='centerItems'>
+            <div>
+                <img className='userCardImg' src={avatar} alt="Avatar" />
+                <h2>¡Bienvenido {username}!</h2>
+                <p>Estas registrado con el correo {email}</p>
+            </div>
 
-            </Card.Body>
-        </Card>
+            <div>
+                <h3>Tus bares favoritos son</h3>
+                {favorites.map(bar => {
+                    return (
+                        <p className='favList'>{bar.name}</p>
+                    )
+                })}
+            </div>
+
+        </main>
     )
 }
 

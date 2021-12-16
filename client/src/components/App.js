@@ -61,6 +61,7 @@ class App extends Component {
                                 <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
                                 <Route exact path="/review/new/:id" render={(props) => <NewReviewForm {...props} storeUser={this.storeUser} />} />
+                                <Redirect to="/" />
                             </Switch>
                             :
                             <Switch>

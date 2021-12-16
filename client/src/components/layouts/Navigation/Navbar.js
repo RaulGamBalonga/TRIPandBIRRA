@@ -33,7 +33,7 @@ const Navigation = ({ loggedUser, storeUser }) => {
         <>
             <div className='Navi'>
                 <div >
-                    <NavLink className='NavLink' to="/"><img src={logo} alt="profileimg" /></NavLink>
+                    <NavLink className='NavLink' to="/"><img id='NavLogo' src={logo} alt="profileimg" /></NavLink>
 
                     {loggedUser ?
                         <>

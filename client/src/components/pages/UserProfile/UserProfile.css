@@ -1,0 +1,28 @@
+.userCardImg{
+width: 200px;
+
+}
+
+/* .centerItems{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+} */
+
+.centerItems div{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+.favList{
+    background-color:rgb(255, 255, 190) ;
+    padding: 10px;
+    margin: 5px;
+}

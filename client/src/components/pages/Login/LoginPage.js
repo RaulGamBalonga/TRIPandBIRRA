@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
 
 class LoginPage extends Component {
@@ -53,11 +54,12 @@ class LoginPage extends Component {
                             Entrar
                         </button>
                     </form>
+                    {/* <p>¿No tienes cuenta? Puedes registrarte <Link to='/signup' >AQUI</Link></p> */}
                 </div>
             </div>
         )
     }
 
-}
+}   
 
 export default LoginPage
