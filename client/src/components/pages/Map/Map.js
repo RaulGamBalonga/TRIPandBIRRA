@@ -1,37 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 import GoogleMapReact from 'google-map-react';
 import BarService from "../../../services/bar.service";
 import './Map.css'
 
-
 //TODO: llevar todos los estilos al .css
-const AnyReactComponent = ({ text }) => <div className='textArea'>
-    <p>{text}</p>
+const AnyReactComponent = (props) => <div className='textArea'>
+    <Link to={`/bar/${props.barId}`}>
+        <Button variant="primary">{props.text}</Button>
+    </Link>
+
 </div>;
-
 const barService = new BarService()
-
-// const bars = [
-//     {
-//         lat: 40.39239323461082,
-//         lng: -3.696869125314842,
-//         text: "Francachela"
-//     },
-//     {
-//         lat: 40.39261942651223,
-//         lng: -3.6987407073855505,
-//         text: "Ironhack"
-//     },
-//     {
-//         lat: 40.39179939494759,
-//         lng: -3.6948590947565214,
-//         text: "El Mirador de Legazpi"
-//     },
-
-// ]
-
-
-class SimpleMap extends Component {
+class Map extends Component {
     constructor() {
         super()
         this.state = {
@@ -99,17 +81,18 @@ class SimpleMap extends Component {
                                     lat={bar.lat}
                                     lng={bar.lng}
                                     text={bar.text}
+                                    barId={bar._id}
+                                    key={bar._id}
                                 />
+
                             )
                         })
                     }
-
-
                 </GoogleMapReact>
             </div>
         );
     }
 }
 
-export default SimpleMap
+export default Map
 
