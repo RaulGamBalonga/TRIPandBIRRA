@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BarService from '../services/bar.service'
 import SimpleMap from './pages/Map/Map'
-
+import UploadService from '../services/upload.service';
 export default class NewBarForm extends Component {
     constructor(props) {
         super(props)
@@ -16,6 +16,8 @@ export default class NewBarForm extends Component {
 
         this.barservice = new BarService()
         this.mapservice = new SimpleMap()
+        this.uploadService = new UploadService()
+
     }
 
     // componentDidMount() {
@@ -25,7 +27,6 @@ export default class NewBarForm extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.selectedLocation !== this.props.selectedLocation) {
             this.setState({ ...this.state, latitude: this.props.selectedLocation.latitude, longitude: this.props.selectedLocation.longitude })
-            console.log('heyyyyyyyyyyyyyy')
         }
     }
 
@@ -46,10 +47,30 @@ export default class NewBarForm extends Component {
         this.setState({ [name]: value })
     }
 
+    handleUploadChange = (e) => {
+
+        const uploadData = new FormData()
+        uploadData.append('image', e.target.files[0])
+
+        this.uploadService
+            .uploadImage(uploadData)
+            .then(response => {
+                this.setState({
+                    image: response.data.cloudinary_url
+                })
+            })
+            .catch(err => console.log(err))
+
+    }
+
     render() {
         return (
-            <>
+            <>{this.state.latitude ?
+                <p>¡Localización seleccionada con éxito!</p>
+                :
                 <p>Toca en el mapa donde quieres situar el nuevo bar</p>
+            }
+
                 <form onSubmit={this.handleSubmit}>
                     <form controlId="title">
                         <label>Name</label>
@@ -66,10 +87,16 @@ export default class NewBarForm extends Component {
                     <input onChange={this.handleInputChange} value={this.state.length} name="longitude" type="text" />
                 </form> */}
 
-                    <form className="mb-3" controlId="imageUrl">
+                    {/*  <form className="mb-3" controlId="imageUrl">
                         <label>Url de la imagen</label>
                         <input onChange={this.handleInputChange} value={this.state.imageUrl} name="image" type="text" />
-                    </form>
+                    </form> */}
+
+
+                    <Form.Group controlId="image">
+                        <Form.Label> <h3>¡Sube una foto de tu bar</h3></Form.Label>
+                        <Form.Control onChange={this.handleUploadChange} name="image" type="file" />
+                    </Form.Group>
 
                     <button variant="primary" type="submit">
                         Enviar

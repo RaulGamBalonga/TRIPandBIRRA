@@ -40,10 +40,10 @@ const reviewSchema = new Schema(
 
         },
 
-        rating: {
-            type: String,
-            enum: ['CARO', 'CORRECTO', 'BARATO'],
-        },
+        // rating: {
+        //     type: String,
+        //     enum: ['CARO', 'CORRECTO', 'BARATO'],
+        // },
 
         creator: { type: Schema.Types.ObjectId, ref: 'User' },
 

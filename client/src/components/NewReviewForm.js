@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ToggleButtonGroup, ToggleButton, Form, Button } from 'react-bootstrap'
+import { ToggleButtonGroup, ToggleButton, Form, Button, } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
 import BarService from '../services/bar.service';
 import UploadService from '../services/upload.service';
@@ -16,7 +16,7 @@ export default class NewReviewForm extends Component {
             tapa: '',
             price: '',
             quality: '',
-            rating: '',
+           
         }
         this.barService = new BarService()
         this.reviewService = new ReviewService()
@@ -37,7 +37,7 @@ export default class NewReviewForm extends Component {
         e.preventDefault();
         this.reviewService.createReview(this.state)
             .then(response => {
-
+                    console.log(response);
                 this.props.history.push("/")
             })
             .catch(err => console.log(err))
@@ -50,8 +50,6 @@ export default class NewReviewForm extends Component {
     }
 
     handleUploadChange = (e) => {
-
-        this.setState()
 
         const uploadData = new FormData()
         uploadData.append('image', e.target.files[0])

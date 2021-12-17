@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, } from "react-bootstrap";
+import { Container, Row, Col, Button, Carousel, } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
 import ReviewList from "../BarList/ReviewList";
 import UserService from "../../../services/user.service"
+import patito from '../PagesImages/patito-amarillo.jpg'
+import olives from "../PagesImages/portada_variedades_800x400.jpg"
+import chips from "../PagesImages/Tapa-Patatas_Fritas.jpg"
+import peanuts from "../PagesImages/Aperitivo-Frutos_secos-2011.jfif"
 
 
 class BarDetails extends Component {
@@ -179,7 +183,7 @@ class BarDetails extends Component {
 
     render() {
         const { name, image, _id } = this.state
-
+        console.log(this.state)
         return (
             <>
                 <Container>
@@ -199,8 +203,31 @@ class BarDetails extends Component {
                                     <hr />
                                     <p>Precio: {this.state.topQuality} </p>
                                     <hr />
+
+                                    <Carousel>
+
+                                        {this.state.reviews.map(elem => (
+                                            
+                                            <Carousel.Item>
+                                                <img
+                                                    className="d-block w-100"
+                                                    src={elem.image}
+                                                    alt="Third slide"
+                                                />
+
+                                                <Carousel.Caption>
+
+                                                </Carousel.Caption>
+                                            </Carousel.Item>
+                                        ))}
+                                    </Carousel>
+
+
                                 </div>
                             </article>
+
+                            <br></br>
+                            <br></br>
                         </Col>
                         <Col md={4}>
                             {/* <img className="detailsImg" src={image} alt={name} ></img> */}
