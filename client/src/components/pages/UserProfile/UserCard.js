@@ -9,24 +9,24 @@ import './UserProfile.css'
 const UserCard = ({ loggedUser, }) => {
 
     const { _id, username, email, image, favorites } = loggedUser
-    // console.log(loggedUser)
     return (
-        <main className='centerItems'>
+        <main className='centerItems userCard'>
             <div>
                 <img className='userCardImg' src={avatar} alt="Avatar" />
-                <h2>¡Bienvenido {username}!</h2>
-                <p>Estas registrado con el correo {email}</p>
+                <h2>¡Bienvenido/a {username}!</h2>
+                <p>Tu correo electrónico es {email}</p>
             </div>
-
             <div>
                 <h3>Tus bares favoritos son</h3>
                 {favorites.map(bar => {
                     return (
-                        <p className='favList'>{bar.name}</p>
+                        <>
+                            <div className='div-sep-line'></div>
+                            <h5 className='favList'>{bar.name}</h5>
+                        </>
                     )
                 })}
             </div>
-
         </main>
     )
 }

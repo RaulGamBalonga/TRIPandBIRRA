@@ -49,7 +49,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <div className='transparentBG' id="App">
+                <div id='superContainer'>
                     <Navbar storeUser={this.storeUser} loggedUser={this.state.loggedUser} pageWrapId={"page-wrap"} outerContainerId={"App"} />
                     <main>
 
@@ -70,14 +70,12 @@ class App extends Component {
                                 <Redirect to="/" />
                             </Switch>
                         }
-                        <div>
+                        <div >
                             <Map storeSelectedLocation={this.storeSelectedLocation} />
                         </div>
                     </main>
                 </div>
 
-
-                {/* <Footer /> */}
 
             </>
 

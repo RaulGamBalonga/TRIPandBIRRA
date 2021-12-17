@@ -30,7 +30,7 @@ class BarPage extends Component {
   }
 
   // filrtbars()
-  
+
 
   render() {
 
@@ -40,7 +40,7 @@ class BarPage extends Component {
         <div className="barList">
           <BarList refreshBars={this.refreshBars} bars={this.state.bars} />
         </div>
-       {/*  <SearchBar filterBars={this.filterBars} /> */}
+        {/*  <SearchBar filterBars={this.filterBars} /> */}
       </Container>
     )
   }

@@ -1,4 +1,16 @@
-.transparentBG{
+.buttonStyle{
+    border-radius: 25%;
+    border: solid black;
+    border-width: 0px 3px 3px 0px;
+    background-color: aliceblue;
+    padding: 1px 25px 1px 25px;
+}
 
-    background-color: transparent !important;
+#superContainer{
+padding: 10px 5px 10px 5px;
+background-color: rgb(255, 255, 205);
+}
+
+#mapBorder{
+    border-radius: 55%;
 }

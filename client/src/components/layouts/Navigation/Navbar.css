@@ -3,19 +3,25 @@
 
 }
 
+.buttonStyle{
+    border-radius: 25%;
+    border: solid black;
+    border-width: 0px 3px 3px 0px;
+    background-color: aliceblue;
+    padding: 1px 25px 1px 25px;
+}
 
 .Navi{
-        background:linear-gradient(to top, rgba(255, 238, 0, 0.753), rgba(255, 255, 255, 0.479));
+        background:linear-gradient(to top, rgb(154, 231, 255), rgba(255, 255, 255, 0.753));
         height: 60px;
         display: flex;
         flex-direction: row;
         justify-content:center;
         align-items: center;
         align-content: center;
-        border-radius: 10%;
-}
-.transparentBG{
-    /* background-color: transparent !important; */
+        border-bottom-right-radius: 15% ;
+        border-bottom-left-radius: 15% ;
+
 }
 
 .NavLink{

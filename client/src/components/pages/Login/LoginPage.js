@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
+import './LoginPage.css'
+
 
 class LoginPage extends Component {
     constructor(props) {
@@ -33,7 +35,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className='loginUp'>
                 <h2>Entra a tu cuenta</h2>
                 <hr />
                 <div onSubmit={this.handleSubmit}>
@@ -50,16 +52,15 @@ class LoginPage extends Component {
                             </label>
                         </div>
 
-                        <button type="submit">
+                        <button className='buttonStyle' type="submit">
                             Entrar
                         </button>
                     </form>
-                    {/* <p>¿No tienes cuenta? Puedes registrarte <Link to='/signup' >AQUI</Link></p> */}
                 </div>
             </div>
         )
     }
 
-}   
+}
 
 export default LoginPage

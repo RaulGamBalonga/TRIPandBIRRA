@@ -5,13 +5,19 @@ import BarService from "../../../services/bar.service";
 import './Map.css'
 import mapPoint from './MapImg/mappoint.png'
 
-//TODO: llevar todos los estilos al .css
-const BarInMap = (props) => <div className='textArea'>
-    <Link to={`/bar/${props.barId}`}>
-        <img className='mapPoint' src={mapPoint} alt='mapBarPoint' />
-        {/* <b>{props.text}</b> */}
-    </Link>
-</div>;
+const BarInMap = (props) =>
+    <div style={{
+        transform: "translate(-50 %, -50 %)"
+    }} className='mapMarker'>
+        <Link to={`/bar/${props.barId}`}>
+            <div className='markerWrapper'>
+                <div className='link'>
+                    <p>{props.text}</p>
+                </div>
+                <img className='mapPoint' src={mapPoint} alt='mapBarPoint' />
+            </div>
+        </Link>
+    </div>;
 
 const barService = new BarService()
 
@@ -50,7 +56,7 @@ class Map extends Component {
             lat: 40.393364243975796,
             lng: -3.6977601072752524
         },
-        zoom: 15
+        zoom: 10
 
     };
 
