@@ -192,7 +192,7 @@ class BarDetails extends Component {
                     <Row className="justify-content-around">
                         <Col md={6} style={{ overflow: "hidden" }}>
                             <article>
-                                <h3>{name}</h3>
+                                <h3>{name}</h3> <p>Tiene {this.state.reviews.length} reseñas</p>
                                 <div>
                                     <hr />
                                     <p>Lo más pedido: {this.state.topDrink} </p>
@@ -234,11 +234,11 @@ class BarDetails extends Component {
                         </Col>
                     </Row>
                     <Link to={`/review/new/${_id}`}>
-                        <Button variant="primary">Escribir reseña</Button>
+                        <button >Escribir reseña</button>
                     </Link>
                     <br></br>
                     <br></br>
-                    <Button variant="primary" onClick={this.addFavorites}>Añadir a favoritos</Button>
+                    <button onClick={this.addFavorites}>Añadir a favoritos</button>
                     <ReviewList reviews={this.state.reviews} />
 
                 </Container >

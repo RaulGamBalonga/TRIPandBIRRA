@@ -1,0 +1,55 @@
+.userCardImg{
+width: 200px;
+
+}
+
+.centerItems div{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+.favList{
+    background-color:rgb(255, 255, 190) ;
+    padding: 10px;
+    margin: 5px;
+}
+
+.buttonStyle{
+    border-radius: 25%;
+    border: solid black;
+    border-width: 0px 3px 3px 0px;
+    background-color: aliceblue;
+    padding: 1px 25px 1px 25px;
+    margin: 15px 0px;
+
+}
+
+.userCard{
+    text-align: center;
+    background-color: white;
+    margin: 5px 0px;
+    border-radius: 5%;
+}
+
+
+h2{
+padding-top: 10px;
+}
+
+input{
+    border-top-right-radius: 15%;
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    text-align: center;
+    border-width: 0px 3px 3px 0px;
+}
+
+.div-sep-line {
+	border-bottom: solid 1px #aaa;
+	height: 5px;
+	width: 100%;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthService from '../../../services/auth.service'
+import './SignupPage.css'
 
 class SignupPage extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class SignupPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className='signUp'>
                 <h2>Registrate</h2>
                 <hr />
                 <div onSubmit={this.handleSubmit}>
@@ -41,10 +42,9 @@ class SignupPage extends Component {
                             <p>Tu nombre de usuario/a</p>
                             <input onChange={this.handleInputChange} value={this.state.username} name="username" type="text" placeholder="Escribe nombre de usuario/a" />
                         </label>
-                        <br />
                         <label>
                             <p>Tu correo electrónico</p>
-                            <input onChange={this.handleInputChange} value={this.state.email} name="email" type="text" placeholder="email" />
+                            <input className='inputStyle' onChange={this.handleInputChange} value={this.state.email} name="email" type="text" placeholder="Email" />
                         </label>
 
                         <div>
@@ -54,7 +54,7 @@ class SignupPage extends Component {
                             </label>
                         </div>
 
-                        <button type="submit">
+                        <button className='buttonStyle' type="submit">
                             Registrate
                         </button>
                     </form>

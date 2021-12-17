@@ -49,7 +49,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <div className='transparentBG' id="App">
+                <div id='superContainer'>
                     <Navbar storeUser={this.storeUser} loggedUser={this.state.loggedUser} pageWrapId={"page-wrap"} outerContainerId={"App"} />
                     <main>
 
@@ -61,6 +61,7 @@ class App extends Component {
                                 <Route exact path="/bar/:id" render={(props) => <BarDetails {...props} storeUser={this.storeUser} />} />
                                 <Route path="/userprofile" render={(props) => <UserPage {...props} loggedUser={this.state.loggedUser} storeUser={this.storeUser} />} />
                                 <Route exact path="/review/new/:id" render={(props) => <NewReviewForm {...props} storeUser={this.storeUser} />} />
+                                <Redirect to="/" />
                             </Switch>
                             :
                             <Switch>
@@ -69,14 +70,12 @@ class App extends Component {
                                 <Redirect to="/" />
                             </Switch>
                         }
-                        <div>
+                        <div >
                             <Map storeSelectedLocation={this.storeSelectedLocation} />
                         </div>
                     </main>
                 </div>
 
-
-                {/* <Footer /> */}
 
             </>
 

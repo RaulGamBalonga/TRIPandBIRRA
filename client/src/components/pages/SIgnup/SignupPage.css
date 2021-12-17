@@ -1,0 +1,28 @@
+.buttonStyle{
+    border-radius: 25%;
+    border: solid black;
+    border-width: 0px 3px 3px 0px;
+    background-color: aliceblue;
+    padding: 1px 25px 1px 25px;
+    margin: 15px 0px;
+
+}
+
+.signUp{
+    text-align: center;
+    background-color: white;
+    margin: 5px 0px;
+    border-radius: 5%;
+}
+
+h2{
+padding-top: 10px;
+}
+
+input{
+    border-top-right-radius: 15%;
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    text-align: center;
+    border-width: 0px 3px 3px 0px;
+}
