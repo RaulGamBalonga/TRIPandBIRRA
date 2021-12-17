@@ -49,7 +49,6 @@ class Map extends Component {
         this.props.storeSelectedLocation(lat, lng)
     }
 
-
     static defaultProps = {
         mapId: '601e432217b3abef',
         center: {
@@ -59,7 +58,6 @@ class Map extends Component {
         zoom: 10
 
     };
-
 
     render() {
         return (

@@ -3,7 +3,6 @@ import BarService from '../services/bar.service'
 import SimpleMap from './pages/Map/Map'
 import UploadService from '../services/upload.service';
 import './NewBarForm.css'
-
 export default class NewBarForm extends Component {
     constructor(props) {
         super(props)
@@ -20,10 +19,6 @@ export default class NewBarForm extends Component {
         this.uploadService = new UploadService()
 
     }
-
-    // componentDidMount() {
-    //     this.setState({ ...this.state, latitude: this.props.selectedLocation.latitude, longitude: this.props.selectedLocation.longitude })
-    // }
 
     componentDidUpdate(prevProps) {
         if (prevProps.selectedLocation !== this.props.selectedLocation) {

@@ -44,13 +44,4 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 
-
-  // app.use((req, res, next) => {
-  //   req.user = req.session.user || null;
-  //   next();
-  // });
-  // app.use((req, res, next) => {
-  //   req.user = req.session.user || null;
-  //   next();
-  // });
 };

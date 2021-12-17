@@ -11,20 +11,14 @@ import signin from '../Navigation/NavBarImg/signin.png'
 import login from '../Navigation/NavBarImg/login.png'
 import logo from '../Navigation/NavBarImg/logo.png'
 
-
-
-
 const authService = new AuthService()
 
 
 const Navigation = ({ loggedUser, storeUser }) => {
-    // const Navigation = (props) => {
-
-
+    
     const logout = () => {
         authService.logout()
-            // .then(response => props.storeUser(null))
-
+            
             .then(response => storeUser(null))
             .catch(err => console.log(err))
     }

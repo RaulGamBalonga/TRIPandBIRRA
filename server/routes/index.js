@@ -5,8 +5,6 @@ const barRoutes = require("./bar.routes");
 const userRoutes = require('./user.routes')
 const uploadRoutes = require('./upload.routes')
 
-
-
 router.get("/", (req, res, next) => {
   res.json("All good in here");
 });

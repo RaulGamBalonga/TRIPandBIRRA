@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import React from "react";
-import ReactDOM from "react-dom";
 import '..';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from './layouts/Navigation/Navbar.js'
@@ -13,7 +12,6 @@ import NewBarForm from './NewBarForm';
 import NewReviewForm from './NewReviewForm'
 import BarDetails from './pages/BarDetails/BarDetails';
 import '../components/App.css'
-// import Footer from './layout/Footer/Footer'
 
 import UserPage from './pages/UserProfile/UserPage';
 class App extends Component {
@@ -44,8 +42,6 @@ class App extends Component {
         this.setState({ ...this.state, selectedLocation: { latitude, longitude } })
     }
 
-
-
     render() {
         return (
             <>
@@ -75,7 +71,6 @@ class App extends Component {
                         </div>
                     </main>
                 </div>
-
 
             </>
 

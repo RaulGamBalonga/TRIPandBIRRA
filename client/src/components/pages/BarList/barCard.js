@@ -10,14 +10,8 @@ function BarCard(props) {
             <Card.Img variant="top" src={props.bar.image} />
             <Card.Body>
                 <Card.Title>{props.bar.name}</Card.Title>
-                {/* <Card.Text>
-                    {props.bar.location.coordinates[0]}
-                </Card.Text>
-                <Card.Text>
-                    {props.bar.location.coordinates[1]}
-                </Card.Text> */}
-
-                <Link to={`/bar/${props.bar._id}`}>
+            
+               <Link to={`/bar/${props.bar._id}`}>
                     <button className='buttonStyle'>Detalles</button>
                 </Link>
             </Card.Body>

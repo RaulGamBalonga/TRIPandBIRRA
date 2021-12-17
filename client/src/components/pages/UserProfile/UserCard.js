@@ -1,14 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import avatar from '../PagesImages/avatarprov.jpg'
 import './UserProfile.css'
 
-
-
-
 const UserCard = ({ loggedUser, }) => {
 
-    const { _id, username, email, image, favorites } = loggedUser
+    const {  username, email, favorites } = loggedUser
     return (
         <main className='centerItems userCard'>
             <div>

@@ -3,7 +3,6 @@ import { ToggleButtonGroup, ToggleButton, Form, Button, } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
 import BarService from '../services/bar.service';
 import UploadService from '../services/upload.service';
-
 export default class NewReviewForm extends Component {
 
     constructor(props) {
@@ -16,32 +15,23 @@ export default class NewReviewForm extends Component {
             tapa: '',
             price: '',
             quality: '',
-           
+
         }
         this.barService = new BarService()
         this.reviewService = new ReviewService()
         this.barService = new BarService()
         this.uploadService = new UploadService()
 
-
     }
-
-
-
-    // 1. ya tenemos el id del bar en la url
-    // 2. cuando el componente se monta, hacemos que ese id se guarde en 'bar' en el estado
-    // 3. si queremos que salga el nombre del bar, hay que llamar al bar service para traer sus datos y poder guardarlos en el estado
-    // 4. para crear una reseña, hay que pasarle tambien el id del bar para el que se crea y tambien el id del usuario que la crea (logged user)
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.reviewService.createReview(this.state)
             .then(response => {
-                    console.log(response);
-                this.props.history.push("/")
+                console.log(response);
+                this.props.history.push(`/bar/${response.data.bar}`)
             })
             .catch(err => console.log(err))
-
     }
 
     handleToggleButton = (selectedOption, name) => {
@@ -138,7 +128,6 @@ export default class NewReviewForm extends Component {
                         </ToggleButton>
                     </ToggleButtonGroup >
                     <hr />
-
 
                     <Form.Group controlId="image">
                         <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>

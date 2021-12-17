@@ -4,8 +4,6 @@ const { isLoggedIn } = require("../middleware");
 const Bar = require('../models/Bar.model')
 const User = require('../models/User.model')
 
-
-
 router.get("/all/:barId", (req, res) => {
     console.log(req.session.currentUser)
     Review.find({ bar: req.params.barId })

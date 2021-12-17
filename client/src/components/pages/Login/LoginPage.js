@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
 import './LoginPage.css'
-
-
 class LoginPage extends Component {
     constructor(props) {
         super(props)

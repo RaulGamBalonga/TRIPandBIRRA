@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button, Carousel, } from "react-bootstrap";
+import { Container, Row, Col, Carousel, } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
 import ReviewList from "../BarList/ReviewList";
 import UserService from "../../../services/user.service"
-import patito from '../PagesImages/patito-amarillo.jpg'
-import olives from "../PagesImages/portada_variedades_800x400.jpg"
-import chips from "../PagesImages/Tapa-Patatas_Fritas.jpg"
-import peanuts from "../PagesImages/Aperitivo-Frutos_secos-2011.jfif"
-
-
 class BarDetails extends Component {
     constructor(props) {
         super()
@@ -34,7 +28,6 @@ class BarDetails extends Component {
             topPrice: '',
             topQuality: ''
         }
-
 
         this.barService = new BarService()
         this.reviewService = new ReviewService()
@@ -87,7 +80,6 @@ class BarDetails extends Component {
 
                 })
 
-
                 const drinksType = { cerveza: 0, Vino: 0, refresco: 0, otros: 0 };
                 this.state.drinksArray.forEach(drink => {
 
@@ -106,7 +98,6 @@ class BarDetails extends Component {
                 })
 
                 this.setState({ ...this.state, drinks: drinksType })
-
 
                 const tapasType = { 'Frutos Secos': 0, Olivas: 0, Fritos: 0, Pinchos: 0, Otros: 0 }
                 this.state.tapasArray.forEach(tapa => {
@@ -131,7 +122,6 @@ class BarDetails extends Component {
 
                 this.setState({ ...this.state, tapas: tapasType })
 
-
                 const qualityType = { mala: 0, buena: 0 };
                 this.state.qualitiesArray.forEach(quality => {
 
@@ -145,7 +135,6 @@ class BarDetails extends Component {
                 })
 
                 this.setState({ ...this.state, quality: qualityType })
-
 
                 const priceType = { mal: 0, normal: 0, bien: 0 };
                 this.state.pricesArray.forEach(price => {
@@ -179,8 +168,6 @@ class BarDetails extends Component {
             .catch(err => console.log(err))
     }
 
-
-
     render() {
         const { name, image, _id } = this.state
         console.log(this.state)
@@ -212,7 +199,7 @@ class BarDetails extends Component {
                                                 <img
                                                     className="d-block w-100"
                                                     src={elem.image}
-                                                    alt="Third slide"
+                                                    alt="foto de la review"
                                                 />
 
                                                 <Carousel.Caption>
@@ -222,7 +209,6 @@ class BarDetails extends Component {
                                         ))}
                                     </Carousel>
 
-
                                 </div>
                             </article>
 
@@ -230,7 +216,7 @@ class BarDetails extends Component {
                             <br></br>
                         </Col>
                         <Col md={4}>
-                            {/* <img className="detailsImg" src={image} alt={name} ></img> */}
+                            
                         </Col>
                     </Row>
                     <Link to={`/review/new/${_id}`}>

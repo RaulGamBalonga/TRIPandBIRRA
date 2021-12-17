@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Container } from 'react-bootstrap'
 import UserService from '../../../services/user.service'
 import UserCard from "./UserCard";
-
 class UserPage extends Component {
     constructor(props) {
         super()
