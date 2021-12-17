@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from '../PagesImages/avatarprov.jpg'
+import avatar from '../PagesImages/logo.png'
 import './UserProfile.css'
 
 const UserCard = ({ loggedUser, }) => {

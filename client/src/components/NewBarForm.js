@@ -61,23 +61,30 @@ export default class NewBarForm extends Component {
 
     render() {
         return (
-            <>{this.state.latitude ?
-                <p>¡Localización seleccionada con éxito!</p>
-                :
-                <p>Toca en el mapa donde quieres situar el nuevo bar</p>
-            }
+            <>
                 <div className='newBarForm'>
                     <form onSubmit={this.handleSubmit}>
                         <form className='addpadding'>
-                            <label>Name</label>
+                            <label>Nombre del bar </label>
                             <input onChange={this.handleInputChange} value={this.state.title} name="name" type="text" />
                         </form>
+                        {this.state.latitude ?
+
+                            <div className='position' >
+                                <p>¡Localización seleccionada con éxito!</p>
+                                <p>(Si quieres corregir la localización del bar, tienes que tocar en NUEVO BAR)</p>
+                            </div>
+                            :
+                            <p>Toca en el mapa donde quieres situar el nuevo bar</p>
+                        }
 
                         <form>
-                            <label> <h3>¡Sube una foto de tu bar</h3></label>
+                            <div className='div-sep-line'></div>
+
+                            <label> <h5>SUBE UNA FOTO DEL BAR</h5></label>
+
                             <input onChange={this.handleUploadChange} name="image" type="file" />
                         </form>
-                        <p>¡Toca en el mapa el lugar donde está el bar! Te rogamos aumentes el zoom en el mapa para mejorar la localización</p>
                         <div className='div-sep-line'></div>
                         <button className='buttonStyle' type="submit">
                             Enviar

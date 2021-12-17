@@ -3,6 +3,8 @@ import { ToggleButtonGroup, ToggleButton, Form, Button, } from 'react-bootstrap'
 import ReviewService from '../services/review.service'
 import BarService from '../services/bar.service';
 import UploadService from '../services/upload.service';
+import './NewReviewForm.css'
+
 export default class NewReviewForm extends Component {
 
     constructor(props) {
@@ -35,7 +37,7 @@ export default class NewReviewForm extends Component {
     }
 
     handleToggleButton = (selectedOption, name) => {
-
+        console.log(name, selectedOption)
         this.setState({ [name]: selectedOption })
     }
 
@@ -59,87 +61,99 @@ export default class NewReviewForm extends Component {
 
         return (
             <>
-                <form onSubmit={this.handleSubmit}>
-                    <h2>¿Qué tal ha ido tu experiencia de tapeo? {this.state.bar} </h2>
-                    <hr />
-                    <h3>¿QUÉ TE HAS TOMADO?</h3>
-                    <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>
+                <div id='superContainer'>
+                    <form onSubmit={this.handleSubmit}>
+                        <hr />
+                        <div className='thisCenter'>
+                            <h3>¿Qué te has tomado?</h3>
 
-                        <ToggleButton id="drink-btn-1" value={'CERVEZA'}>
-                            <img src="" alt="" />
-                            Cerveza
-                        </ToggleButton>
-                        <ToggleButton id="drink-btn-2" value={'VINO'}>
-                            Vino
-                        </ToggleButton>
-                        <ToggleButton id="drink-btn-3" value={'REFRESCO'}>
-                            Refresco
-                        </ToggleButton>
-                        <ToggleButton id="drink-btn-4" value={'OTRO'}>
-                            Otros
-                        </ToggleButton>
-                    </ToggleButtonGroup >
+                            <ToggleButtonGroup type="radio" name="drink" onChange={(value) => this.handleToggleButton(value, 'drink')}>
+                                <ToggleButton id="drink-btn-1" className='me-2' value={'CERVEZA'}>
+                                    Cerveza
+                                </ToggleButton>
+                                <ToggleButton id="drink-btn-2" className='me-2' value={'VINO'}>
+                                    Vino
+                                </ToggleButton>
+                                <ToggleButton id="drink-btn-3" className='me-2' value={'REFRESCO'}>
+                                    Refresco
+                                </ToggleButton>
+                                <ToggleButton id="drink-btn-4" value={'OTRO'}>
+                                    Otros
+                                </ToggleButton>
+                            </ToggleButtonGroup >
+                        </div>
+                        <hr />
+                        <div className='thisCenter'>
+                            <h3>¿Qué te han puesto de tapa?</h3>
+                            <ToggleButtonGroup className='thisCenter' type="radio" name="tapa" onChange={(value) => this.handleToggleButton(value, 'tapa')}>
+                                <ToggleButton id="tapa-btn-1" className='me-2 mb-2' value={'FRUTOS SECOS (PIPAS, KIKOS, PATATAS...'}>
+                                    Frutos Secos (Pipas, kikos, Patatas...)
+                                </ToggleButton>
+                                <ToggleButton id="tapa-btn-2" className='me-2 mb-2' value={'OLIVAS'}>
+                                    Olivas
+                                </ToggleButton>
+                                <ToggleButton id="tapa-btn-3" className='me-2 mb-2' value={'FRITOS (NUGUETS, CROQUETAS...)'}>
+                                    Fritos (Nuguets, Croquetas...)
+                                </ToggleButton>
+                                <ToggleButton id="tapa-btn-4" className='me-2 mb-2' value={'PINCHOS'}>
+                                    Pinchos
+                                </ToggleButton>
+                                <ToggleButton id="tbg-btn-5" className='me-2 mb-2' value={'OTROS'}>
+                                    Otros
+                                </ToggleButton>
+                            </ToggleButtonGroup >
+                        </div>
+                        <hr />
+                        <div className='thisCenter'>
 
-                    <hr />
-                    <h3>¿QUÉ TE HAN PUESTO DE TAPA?</h3>
-                    <ToggleButtonGroup type="radio" name="tapa" onChange={(value) => this.handleToggleButton(value, 'tapa')}>
+                            <h3>¿Qué te ha parecido el precio?</h3>
+                            <ToggleButtonGroup type="radio" name="price" onChange={(value) => this.handleToggleButton(value, 'price')}>
 
-                        <ToggleButton id="tapa-btn-1" value={'FRUTOS SECOS (PIPAS, KIKOS, PATATAS...'}>
-                            Frutos Secos (Pipas, kikos, Patatas...)
-                        </ToggleButton>
-                        <ToggleButton id="tapa-btn-2" value={'OLIVAS'}>
-                            Olivas
-                        </ToggleButton>
-                        <ToggleButton id="tapa-btn-3" value={'FRITOS (NUGUETS, CROQUETAS...)'}>
-                            Fritos (Nuguets, Croquetas...)
-                        </ToggleButton>
-                        <ToggleButton id="tapa-btn-4" value={'PINCHOS'}>
-                            Pinchos
-                        </ToggleButton>
-                        <ToggleButton id="tbg-btn-5" value={'OTROS'}>
-                            Otros
-                        </ToggleButton>
-                    </ToggleButtonGroup >
+                                <ToggleButton id="price-btn-1" className='me-2' value={'CARO'}>
+                                    Pasadísimo
+                                </ToggleButton>
+                                <ToggleButton id="price-btn-2" className='me-2' value={'CORRECTO'}>
+                                    Todo bien
+                                </ToggleButton>
+                                <ToggleButton id="price-btn-3" className='me-2' value={'BARATO'}>
+                                    ¡Tirado!
+                                </ToggleButton>
+                            </ToggleButtonGroup >
+                        </div>
 
-                    <hr />
-                    <h3>¿QUÉ TE HA PARECIDO EL PRECIO?</h3>
-                    <ToggleButtonGroup type="radio" name="price" onChange={(value) => this.handleToggleButton(value, 'price')}>
+                        <hr />
+                        <div className='thisCenter'>
+                            <h3>¿Qué tal la calidad de la tapa?</h3>
+                            <ToggleButtonGroup type="radio" name="quality" onChange={(value) => this.handleToggleButton(value, 'quality')}>
 
-                        <ToggleButton id="price-btn-1" value={'CARO'}>
-                            Pasadísimo
-                        </ToggleButton>
-                        <ToggleButton id="price-btn-2" value={'CORRECTO'}>
-                            Todo bien
-                        </ToggleButton>
-                        <ToggleButton id="price-btn-3" value={'BARATO'}>
-                            ¡Tirado!
-                        </ToggleButton>
-                    </ToggleButtonGroup >
+                                <ToggleButton id="quality-btn-1" className='me-2' value={'MALA'}>
+                                    Mala
+                                </ToggleButton>
+                                <ToggleButton id="quality-btn-2" className='me-2' value={'BUENA'}>
+                                    Buena
+                                </ToggleButton>
+                            </ToggleButtonGroup >
+                            <hr />
+                        </div>
 
-                    <hr />
-                    <h3>¿QUÉ TAL LA CALIDAD DE LA TAPA?</h3>
-                    <ToggleButtonGroup type="radio" name="quality" onChange={(value) => this.handleToggleButton(value, 'quality')}>
+                        <div className='thisCenter'>
 
-                        <ToggleButton id="quality-btn-1" value={'MALA'}>
-                            Mala
-                        </ToggleButton>
-                        <ToggleButton id="quality-btn-2" value={'BUENA'}>
-                            Buena
-                        </ToggleButton>
-                    </ToggleButtonGroup >
-                    <hr />
+                            <Form.Group controlId="image">
+                                <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>
+                                <Form.Control onChange={this.handleUploadChange} name="image" type="file" />
+                            </Form.Group>
+                            <hr />
+                        </div>
+                        <div className='thisCenter'>
 
-                    <Form.Group controlId="image">
-                        <Form.Label> <h3>¡Sube una foto de tu tapa!</h3></Form.Label>
-                        <Form.Control onChange={this.handleUploadChange} name="image" type="file" />
-                    </Form.Group>
-                    <hr />
-                    <Button variant="primary" type="submit">
-                        Enviar reseña
-                    </Button>
-                    <hr />
-                </form>
+                            <button className='buttonStyle' type="submit">
+                                Enviar reseña
+                            </button>
+                            <hr />
+                        </div>
 
+                    </form>
+                </div>
             </>
         );
     }

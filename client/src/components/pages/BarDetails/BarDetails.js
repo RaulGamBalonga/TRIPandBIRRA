@@ -5,6 +5,13 @@ import BarService from "../../../services/bar.service";
 import ReviewService from "../../../services/review.service";
 import ReviewList from "../BarList/ReviewList";
 import UserService from "../../../services/user.service"
+import patito from '../PagesImages/patito-amarillo.jpg'
+import olives from "../PagesImages/portada_variedades_800x400.jpg"
+import chips from "../PagesImages/Tapa-Patatas_Fritas.jpg"
+import peanuts from "../PagesImages/Aperitivo-Frutos_secos-2011.jfif"
+import './BarDetails.css'
+
+
 class BarDetails extends Component {
     constructor(props) {
         super()
@@ -173,13 +180,16 @@ class BarDetails extends Component {
         console.log(this.state)
         return (
             <>
-                <Container>
-                    <h2>DETALLES</h2>
+                <main>
 
-                    <Row className="justify-content-around">
-                        <Col md={6} style={{ overflow: "hidden" }}>
+                    <div className="justify-content-around barDetails">
+                        <div md={6} style={{ overflow: "hidden" }}>
                             <article>
-                                <h3>{name}</h3> <p>Tiene {this.state.reviews.length} reseñas</p>
+                                <div className="itemsalin">
+                                    <h2>DETALLES</h2>
+                                    <h4>{name}</h4>
+                                    <p>Tiene {this.state.reviews.length} reseñas</p>
+                                </div>
                                 <div>
                                     <hr />
                                     <p>Lo más pedido: {this.state.topDrink} </p>
@@ -191,11 +201,11 @@ class BarDetails extends Component {
                                     <p>Precio: {this.state.topQuality} </p>
                                     <hr />
 
-                                    <Carousel>
+                                    <Carousel >
 
                                         {this.state.reviews.map(elem => (
-                                            
-                                            <Carousel.Item>
+
+                                            <Carousel.Item className="carSize">
                                                 <img
                                                     className="d-block w-100"
                                                     src={elem.image}
@@ -208,26 +218,21 @@ class BarDetails extends Component {
                                             </Carousel.Item>
                                         ))}
                                     </Carousel>
-
                                 </div>
                             </article>
+                        </div>
 
-                            <br></br>
-                            <br></br>
-                        </Col>
-                        <Col md={4}>
-                            
-                        </Col>
-                    </Row>
-                    <Link to={`/review/new/${_id}`}>
-                        <button >Escribir reseña</button>
-                    </Link>
-                    <br></br>
-                    <br></br>
-                    <button onClick={this.addFavorites}>Añadir a favoritos</button>
-                    <ReviewList reviews={this.state.reviews} />
+                    </div>
+                    <div className="itemsalin">
+                        <Link to={`/review/new/${_id}`}>
+                            <button className="buttonStyle" >Escribir reseña</button>
+                        </Link>
+                        <button className="buttonStyle" onClick={this.addFavorites}>Añadir a favoritos</button>
 
-                </Container >
+                    </div>
+                </main >
+                <hr />
+
             </>
 
         )
