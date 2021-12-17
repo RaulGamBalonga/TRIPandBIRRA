@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import avatar from '../PagesImages/avatarprov.jpg'
+import avatar from '../PagesImages/logo.png'
 import './UserProfile.css'
 
 

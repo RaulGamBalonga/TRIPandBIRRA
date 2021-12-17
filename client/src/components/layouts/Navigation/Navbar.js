@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
 import '../Navigation/Navbar.css'
@@ -39,7 +38,7 @@ const Navigation = ({ loggedUser, storeUser }) => {
                         <>
 
                             <NavLink className='NavLink' to="/userprofile"><img src={profile} alt="profileimg" /></NavLink>
-                            <NavLink className='NavLink' to="/bar"><img src={bars} alt="barlist" /></NavLink>
+                            {/* <NavLink className='NavLink' to="/bar"><img src={bars} alt="barlist" /></NavLink> */}
                             <NavLink className='NavLink' to="/bar/new"><img src={newbar} alt="createbar" /></NavLink>
                             <NavLink className='NavLink' to='/' onClick={logout}><img src={goout} alt="logout" /></NavLink>
                         </>

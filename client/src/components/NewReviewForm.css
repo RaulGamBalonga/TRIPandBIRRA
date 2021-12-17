@@ -1,0 +1,31 @@
+.buttonStyle{
+    border-radius: 25%;
+    border: solid black;
+    border-width: 0px 3px 3px 0px;
+    background-color: aliceblue;
+    padding: 1px 25px 1px 25px;
+    color: black;
+}
+
+#superContainer{
+padding: 10px 5px 10px 5px;
+background-color: rgb(255, 255, 205);
+
+}
+
+.tapasOrder{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+    }
+.thisCenter{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
